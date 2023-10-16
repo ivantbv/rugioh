@@ -1,0 +1,12 @@
+.cards-list-container {
+    width: 400px; /* Width of the container */
+    height: 600px; /* Height of the container */
+    border: 1px solid #ccc;
+    overflow: hidden;
+}
+
+.cards-list {
+    width: 100%; /* Full width of the container */
+    height: 100%; /* Full height of the container */
+    overflow: auto; /* Enable scrolling for overflow content */
+}
