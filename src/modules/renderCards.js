@@ -31,6 +31,7 @@ class RenderCards {
           this.allCards = data;
           this.appendCards(this.currentPage);
           this.scrollListener();
+          this.displayCardInfo();
         });
       }
 
@@ -65,6 +66,24 @@ class RenderCards {
         });
       }
      // appendCards(currentPage);
+
+     displayCardInfo() {
+      const cardsElements = document.querySelectorAll('.card');
+      if (cardsElements) {
+        const cards = Array.from(cardsElements);
+        const divCardInfo = document.createElement('div');
+        divCardInfo.classList.add('card-info');
+        cards.forEach(card => card.addEventListener('click', () => {
+            const cardId = card.getAttribute('data-card-id');
+            console.log(cardId, 'card id')
+            const cardData = this.allCards.find(cardObj => Number(cardObj.id) === Number(cardId));
+            console.log(cardData.name, 'card data');
+
+            divCardInfo.textContent = cardData.name;
+            document.querySelector('body').appendChild(divCardInfo)
+        }))
+      }
+     }
 }
 
 const renderCards = new RenderCards();
