@@ -14,9 +14,6 @@ class GetCards {
 //       // Perform rendering and other tasks with the data
 //     });
 //   }
-  console.log('ads');
-  
-  
   //renderCards();
 
 class RenderCards {
@@ -37,7 +34,6 @@ class RenderCards {
         });
       }
 
-
     appendCards(page) {
         const startIndex = (page - 1) * this.cardsPerPage;
         const endIndex = startIndex + this.cardsPerPage;
@@ -56,9 +52,6 @@ class RenderCards {
             this.cardsList.appendChild(cardDiv);
             cardsLoaded++
         }
-        
-        console.log('startIndex:', startIndex);
-        console.log('endIndex:', endIndex);
         console.log('Number of cards loaded:', cardsLoaded);
       }
       scrollListener() {
@@ -71,12 +64,11 @@ class RenderCards {
           }
         });
       }
-      // Initial render
      // appendCards(currentPage);
 }
 
 const renderCards = new RenderCards();
-renderCards.scrollListener()
+//renderCards.scrollListener()
 
 // const cardsPerPage = 50;
 // // Keep track of the current page
