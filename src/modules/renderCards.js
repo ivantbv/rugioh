@@ -55,7 +55,7 @@ class RenderCards {
         }
         console.log('Number of cards loaded:', cardsLoaded);
       }
-      scrollListener() {
+    scrollListener() {
         this.cardsList.addEventListener('scroll', () => {
           const container = this.cardsList;
           if (container.scrollTop + container.clientHeight > container.scrollHeight - 5) {
@@ -67,23 +67,23 @@ class RenderCards {
       }
      // appendCards(currentPage);
 
-     displayCardInfo() {
-      const cardsElements = document.querySelectorAll('.card');
-      if (cardsElements) {
-        const cards = Array.from(cardsElements);
-        const divCardInfo = document.createElement('div');
-        divCardInfo.classList.add('card-info');
-        cards.forEach(card => card.addEventListener('click', () => {
-            const cardId = card.getAttribute('data-card-id');
-            console.log(cardId, 'card id')
-            const cardData = this.allCards.find(cardObj => Number(cardObj.id) === Number(cardId));
-            console.log(cardData.name, 'card data');
+    displayCardInfo() {
+      const divCardInfo = document.createElement('div');
+      divCardInfo.classList.add('card-info');
+      this.cardsList.addEventListener('click', (event) => {
+        const card = event.target.closest('.card');
 
+        if (card) {
+          const cardId = card.getAttribute('data-card-id');
+          const cardData = this.allCards.find((cardObj) => Number(cardObj.id) === Number(cardId));
+  
+          if (cardData) {
             divCardInfo.textContent = cardData.name;
-            document.querySelector('body').appendChild(divCardInfo)
-        }))
-      }
-     }
+            document.querySelector('body').appendChild(divCardInfo);
+          }
+        }
+      });
+    }
 }
 
 const renderCards = new RenderCards();
