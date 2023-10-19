@@ -66,10 +66,23 @@ class RenderCards {
         });
       }
      // appendCards(currentPage);
-
+    
     displayCardInfo() {
-      const divCardInfo = document.createElement('div');
-      divCardInfo.classList.add('card-info');
+      const body = document.querySelector('body');
+      const divCardName = document.createElement('div')
+      divCardName.classList.add('card-name');
+      const divCardAttribute = document.createElement('div')
+      divCardAttribute.classList.add('card-attr');
+      const divCardEffect = document.createElement('div');
+      divCardEffect.classList.add('card-effect');
+
+      const divCardAtk = document.createElement('div');
+      const divCardDef = document.createElement('div');
+      const divAtkAndDef = document.createElement('div');
+      const divCardLvl = document.createElement('div');
+      const divCardProperties = document.createElement('div');
+      const divCardInfoContainer = document.createElement('div');
+
       this.cardsList.addEventListener('click', (event) => {
         const card = event.target.closest('.card');
 
@@ -78,12 +91,85 @@ class RenderCards {
           const cardData = this.allCards.find((cardObj) => Number(cardObj.id) === Number(cardId));
   
           if (cardData) {
-            divCardInfo.textContent = cardData.name;
-            document.querySelector('body').appendChild(divCardInfo);
+            divCardName.textContent = cardData.name;
+            if (cardData.localizedProperty) {
+              divCardAttribute.textContent = `[${cardData.localizedAttribute}/${
+                                                cardData.localizedProperty}]`;
+            } else {
+              divCardAttribute.textContent = `[${cardData.localizedAttribute}]`
+            }
+            
+            function assignMonsterCards() {
+
+                if (cardData.hasOwnProperty('atk')) {
+                  divCardAtk.textContent = `ATK/${cardData.atk}`
+                  divAtkAndDef.appendChild(divCardAtk);
+                } 
+                if (cardData.hasOwnProperty('def')) {
+                  divCardDef.textContent = `DEF/${cardData.def}`
+                  divAtkAndDef.appendChild(divCardDef);
+                } 
+                // if (cardData.hasOwnProperty('linkRating')) {
+                //   divCardDef.textContent = `Link Rating/${cardData.linkRating}`;
+                //   divAtkAndDef.appendChild(divCardDef);
+                // } ALREADY IN THE divCardLvl!
+                //add pictures for the ranks/levels
+                if (cardData.hasOwnProperty('level') || cardData.hasOwnProperty('rank') ||
+                    cardData.hasOwnProperty('linkRating')) {
+                  cardData.hasOwnProperty('level') ? divCardLvl.textContent = `x${cardData.level}` :
+                  cardData.hasOwnProperty('rank') ? divCardLvl.textContent = `x${cardData.rank}` :
+                  cardData.hasOwnProperty('linkRating') ? 
+                  divCardLvl.textContent = `Link-${cardData.linkRating} \n Link-Arrows${
+                                                                    cardData.linkArrows}` : ''
+
+                  
+                }
+                if (cardData.properties) {
+                  let thirdProperty = '';
+                  let fourthProperty = '';
+                  if (cardData.properties[2]) {
+                    thirdProperty = '/' + cardData.properties[2]
+                  }
+                  if (cardData.properties(3)) {
+                    fourthProperty = '/' + cardData.properties[3];
+                  }
+                  divCardProperties.textContent = 
+                                        '[' + cardData.properties[0] + '/' + 
+                                        cardData.properties[1] + thirdProperty + fourthProperty + ']'
+                } 
+
+              }
+            
+            divCardEffect.textContent = cardData.effectText; //ADD pendEffect (and pendScale)
+
+            //rework the divCardProperties to be removed from the body if its empty
+            if (cardData.hasOwnProperty('atk') || cardData.properties) {
+              assignMonsterCards();
+              divCardInfoContainer.append(divCardLvl || '', divAtkAndDef || '', divCardName, 
+              divCardProperties || '', divCardAttribute,
+              divCardEffect);
+              body.append(divCardInfoContainer)
+            } else {
+              body.removeChild(divCardInfoContainer);
+              divCardInfoContainer.remove()
+              divAtkAndDef.remove();
+              divCardProperties.remove();
+              divCardLvl.remove();
+              divCardInfoContainer.append(divCardName, 
+                                        divCardAttribute,
+                                        divCardEffect);
+              body.append(divCardInfoContainer)
+            }
+
           }
         }
       });
     }
+    // assignSpellAndTrapCards() {
+
+    // }
+
+
 }
 
 const renderCards = new RenderCards();

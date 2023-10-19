@@ -1,8 +1,8 @@
-1. So far I have the cards data in the all_cards_data.json file
+1. Fetch the cards data in the all_cards_data.json file - DONE. 12180 cards. Update the file once a month
 2. Need to create scripts in the src/ directory that will handle:
  -Card logic and interracation
  -DOM manipulation
- -Cards rendering (assign each card object to its own card with properties)
+ -Cards rendering (assign each card object to its own card with properties) - in the making
  -Card search, Card sort and different filters (text search, attribute search, card type, etc.)
 3. Decide how to optimize the rendering and fetching of the cards:
  -There are over 12 000 cards objects in the all_cards_data.json
@@ -11,3 +11,4 @@
  dont load the other cards or disappear them as soon as they are above or under the browser's visibility
  -Check for framework like Vue and its solutions for DOM.
 4. Think about the design and possible card animations and backgrounds
+5. For backend and hosting use Firebase and Amazon S3 (for storing assets)

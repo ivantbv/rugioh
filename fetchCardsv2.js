@@ -2,6 +2,10 @@
 //https://raw.githubusercontent.com/yugioh-artworks/artworks-en-n.ygorganization.com/main/0/40/11_1.png
 //if github turns to be bad at hosting images and RPM, use the Filebase public bucket in the same way.
 //Just replace the url and path, leave the file structure the same after the slash
+//https://www.db.yugioh-card.com/yugiohdb/forbidden_limited.action?forbiddenLimitedDate=2012-03-01
+//^ to Fetch the forbidden/limited list - it is sorted from 2012 until present
+//Add in my card objects for the cards.name if it matches with the one of the forbidden/limited list
+//a new key:value pair that will list whether a card is limited/semi limited/forbidden for that period
 import fs from 'fs';
 import fetch from 'node-fetch';
 import path from 'path';
