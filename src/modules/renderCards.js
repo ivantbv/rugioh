@@ -77,6 +77,10 @@ class RenderCards {
       divCardAttribute.classList.add('card-attr');
       const divCardEffect = document.createElement('div');
       divCardEffect.classList.add('card-effect');
+      const divCardPendEffect = document.createElement('div');
+      divCardPendEffect.classList.add('card-pend-effect');
+      const divCardPendScale = document.createElement('div');
+      divCardPendScale.classList.add('card-pend-scale');
 
       const divCardAtk = document.createElement('div');
       const divCardDef = document.createElement('div');
@@ -84,6 +88,7 @@ class RenderCards {
       const divCardLvl = document.createElement('div');
       const divCardProperties = document.createElement('div');
       const divCardInfoContainer = document.createElement('div');
+      divCardInfoContainer.classList.add('card-info-container');
 
       this.cardsList.addEventListener('click', (event) => {
         const card = event.target.closest('.card');
@@ -114,8 +119,6 @@ class RenderCards {
             
               // Define the custom order of arrow symbols
               const customOrder = ["1", "4", "7", "2", "8", "3", "6", "9"];
-            
-              // Map the array values to arrow symbols and sort based on the custom order
               const arrowArray = arr
                 .map((num) => `[${arrowMap[num]}]`)
                 .sort((a, b) => {
@@ -141,7 +144,6 @@ class RenderCards {
                   divCardDef.textContent = `Link-${cardData.linkRating}`;
                   divAtkAndDef.appendChild(divCardDef);
                 } //ALREADY IN THE divCardLvl!
-                //add pictures for the ranks/levels
                 if (cardData.hasOwnProperty('level') || cardData.hasOwnProperty('rank') ||
                     cardData.hasOwnProperty('linkArrows') || cardData.hasOwnProperty('linkRating')) {
                   cardData.hasOwnProperty('level') ? divCardLvl.textContent = `☆${cardData.level}` :
@@ -162,24 +164,46 @@ class RenderCards {
                                         '[' + cardData.properties[0] + '/' + 
                                         cardData.properties[1] + thirdProperty + fourthProperty + ']'
                 } 
-
+                if (cardData.pendEffect) {
+                  divCardPendEffect.textContent = `[Pendulum Effect]\n ${cardData.pendEffect}`;
+                }
+                if (cardData.hasOwnProperty('pendScale')) {
+                  divCardPendScale.textContent = `◈${cardData.pendScale}`;
+                }
               }
             
-            divCardEffect.textContent = cardData.effectText; //ADD pendEffect (and pendScale)
-
-            //rework the divCardProperties to be removed from the body if its empty
-            if (cardData.hasOwnProperty('atk') || cardData.properties) {
+            divCardEffect.textContent = cardData.effectText;
+            if (cardData.hasOwnProperty('pendScale') || cardData.pendEffect) {
               assignMonsterCards();
-              divCardInfoContainer.append(divCardLvl || '', divAtkAndDef || '', divCardName, 
-              divCardProperties || '', divCardAttribute,
+              divCardInfoContainer.append(divCardPendScale, divCardLvl || '',
+              divAtkAndDef || '', divCardAttribute, divCardName, 
+              divCardProperties || '', divCardEffect, 
+              divCardPendEffect || '');
+              body.append(divCardInfoContainer);
+            } else if (cardData.hasOwnProperty('atk') || cardData.properties) {
+              if (document.querySelector('.card-pend-effect')) {
+                while (divCardInfoContainer.hasChildNodes()) {
+                  divCardInfoContainer.removeChild(divCardInfoContainer.firstChild);
+                }
+              }
+              if (document.querySelector('.card-pend-scale')) {
+                while (divCardInfoContainer.hasChildNodes()) {
+                  divCardInfoContainer.removeChild(divCardInfoContainer.firstChild);
+                }
+              }
+              assignMonsterCards();
+              divCardInfoContainer.append(divCardLvl || '',
+              divAtkAndDef || '', divCardAttribute, divCardName, 
+              divCardProperties || '',
               divCardEffect);
               body.append(divCardInfoContainer)
             } else {
-              body.removeChild(divCardInfoContainer);
-              divCardInfoContainer.remove()
-              divAtkAndDef.remove();
-              divCardProperties.remove();
-              divCardLvl.remove();
+              if (document.querySelector('.card-info-container')) {
+                while (divCardInfoContainer.hasChildNodes()) {
+                  divCardInfoContainer.removeChild(divCardInfoContainer.firstChild);
+                }
+                body.removeChild(divCardInfoContainer);
+              }
               divCardInfoContainer.append(divCardName, 
                                         divCardAttribute,
                                         divCardEffect);
@@ -193,37 +217,9 @@ class RenderCards {
     // assignSpellAndTrapCards() {
 
     // }
-
-
 }
 
 const renderCards = new RenderCards();
 //renderCards.scrollListener()
-
-// const cardsPerPage = 50;
-// // Keep track of the current page
-// let currentPage = 1;
-
-// // Function to render cards for a specific page
-// function appendCards(page) {
-//   const startIndex = (page - 1) * cardsPerPage;
-//   const endIndex = startIndex + cardsPerPage;
-
-//   for (let i = startIndex; i < endIndex && i < allCards.length; i++) {
-//     // Render each card here
-
-//   }
-// }
-// // Initial render
-// appendCards(currentPage);
-
-// // When the user scrolls to the bottom of the page, load more cards
-// window.addEventListener('scroll', () => {
-//   if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-//     currentPage++;
-//     appendCards(currentPage);
-//   }
-// });
-
 // Export any functions or modules you need
 //export { renderCards };
