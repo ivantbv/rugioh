@@ -66,6 +66,8 @@ class RenderCards {
         });
       }
      // appendCards(currentPage);
+
+    
     
     displayCardInfo() {
       const body = document.querySelector('body');
@@ -98,6 +100,32 @@ class RenderCards {
             } else {
               divCardAttribute.textContent = `[${cardData.localizedAttribute}]`
             }
+            function convertToArrows(arr) {
+              const arrowMap = {
+                "1": "↙",
+                "2": "↓",
+                "3": "↘",
+                "4": "←",
+                "6": "→",
+                "7": "↖",
+                "8": "↑",
+                "9": "↗",
+              };
+            
+              // Define the custom order of arrow symbols
+              const customOrder = ["1", "4", "7", "2", "8", "3", "6", "9"];
+            
+              // Map the array values to arrow symbols and sort based on the custom order
+              const arrowArray = arr
+                .map((num) => `[${arrowMap[num]}]`)
+                .sort((a, b) => {
+                  const indexA = customOrder.indexOf(arr.find((item) => arrowMap[item] === a));
+                  const indexB = customOrder.indexOf(arr.find((item) => arrowMap[item] === b));
+                  return indexA - indexB;
+                });
+            
+              return arrowArray.join('');
+            }
             
             function assignMonsterCards() {
 
@@ -109,20 +137,17 @@ class RenderCards {
                   divCardDef.textContent = `DEF/${cardData.def}`
                   divAtkAndDef.appendChild(divCardDef);
                 } 
-                // if (cardData.hasOwnProperty('linkRating')) {
-                //   divCardDef.textContent = `Link Rating/${cardData.linkRating}`;
-                //   divAtkAndDef.appendChild(divCardDef);
-                // } ALREADY IN THE divCardLvl!
+                if (cardData.hasOwnProperty('linkRating')) {
+                  divCardDef.textContent = `Link-${cardData.linkRating}`;
+                  divAtkAndDef.appendChild(divCardDef);
+                } //ALREADY IN THE divCardLvl!
                 //add pictures for the ranks/levels
                 if (cardData.hasOwnProperty('level') || cardData.hasOwnProperty('rank') ||
-                    cardData.hasOwnProperty('linkRating')) {
-                  cardData.hasOwnProperty('level') ? divCardLvl.textContent = `x${cardData.level}` :
-                  cardData.hasOwnProperty('rank') ? divCardLvl.textContent = `x${cardData.rank}` :
-                  cardData.hasOwnProperty('linkRating') ? 
-                  divCardLvl.textContent = `Link-${cardData.linkRating} \n Link-Arrows${
-                                                                    cardData.linkArrows}` : ''
-
-                  
+                    cardData.hasOwnProperty('linkArrows') || cardData.hasOwnProperty('linkRating')) {
+                  cardData.hasOwnProperty('level') ? divCardLvl.textContent = `☆${cardData.level}` :
+                  cardData.hasOwnProperty('rank') ? divCardLvl.textContent = `★${cardData.rank}` :
+                  cardData.hasOwnProperty('linkArrows') ? 
+                  divCardLvl.textContent = convertToArrows(cardData.linkArrows) : ''
                 }
                 if (cardData.properties) {
                   let thirdProperty = '';
@@ -130,7 +155,7 @@ class RenderCards {
                   if (cardData.properties[2]) {
                     thirdProperty = '/' + cardData.properties[2]
                   }
-                  if (cardData.properties(3)) {
+                  if (cardData.properties[3]) {
                     fourthProperty = '/' + cardData.properties[3];
                   }
                   divCardProperties.textContent = 
