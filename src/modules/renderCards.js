@@ -23,7 +23,6 @@ class RenderCards {
         this.currentPage = 1;
         this.allCards = [];
         this.loadCardsData();
-        //this.allCards = GetCards.renderCards();
     }
     loadCardsData() {
         const getCards = new GetCards();
@@ -67,9 +66,33 @@ class RenderCards {
       }
      // appendCards(currentPage);
 
+    convertToArrows(arr) {
+      const arrowMap = {
+        "1": "↙",
+        "2": "↓",
+        "3": "↘",
+        "4": "←",
+        "6": "→",
+        "7": "↖",
+        "8": "↑",
+        "9": "↗",
+      };
     
+      // Define the custom order of arrow symbols
+      const customOrder = ["1", "4", "7", "2", "8", "3", "6", "9"];
+      const arrowArray = arr
+        .map((num) => `[${arrowMap[num]}]`)
+        .sort((a, b) => {
+          const indexA = customOrder.indexOf(arr.find((item) => arrowMap[item] === a));
+          const indexB = customOrder.indexOf(arr.find((item) => arrowMap[item] === b));
+          return indexA - indexB;
+        });
+    
+      return arrowArray.join('');
+    }
     
     displayCardInfo() {
+      const that = this;
       const body = document.querySelector('body');
       const divCardName = document.createElement('div')
       divCardName.classList.add('card-name');
@@ -105,30 +128,6 @@ class RenderCards {
             } else {
               divCardAttribute.textContent = `[${cardData.localizedAttribute}]`
             }
-            function convertToArrows(arr) {
-              const arrowMap = {
-                "1": "↙",
-                "2": "↓",
-                "3": "↘",
-                "4": "←",
-                "6": "→",
-                "7": "↖",
-                "8": "↑",
-                "9": "↗",
-              };
-            
-              // Define the custom order of arrow symbols
-              const customOrder = ["1", "4", "7", "2", "8", "3", "6", "9"];
-              const arrowArray = arr
-                .map((num) => `[${arrowMap[num]}]`)
-                .sort((a, b) => {
-                  const indexA = customOrder.indexOf(arr.find((item) => arrowMap[item] === a));
-                  const indexB = customOrder.indexOf(arr.find((item) => arrowMap[item] === b));
-                  return indexA - indexB;
-                });
-            
-              return arrowArray.join('');
-            }
             
             function assignMonsterCards() {
 
@@ -149,7 +148,7 @@ class RenderCards {
                   cardData.hasOwnProperty('level') ? divCardLvl.textContent = `☆${cardData.level}` :
                   cardData.hasOwnProperty('rank') ? divCardLvl.textContent = `★${cardData.rank}` :
                   cardData.hasOwnProperty('linkArrows') ? 
-                  divCardLvl.textContent = convertToArrows(cardData.linkArrows) : ''
+                  divCardLvl.textContent = that.convertToArrows(cardData.linkArrows) : ''
                 }
                 if (cardData.properties) {
                   let thirdProperty = '';
