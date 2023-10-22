@@ -15,31 +15,39 @@ class GetCards {
 //     });
 //   }
 
-class RenderCards {
+export class RenderCards {
     constructor() {
         this.cardsList = document.querySelector('.cards-list');
         this.cardsPerPage = 30;
         this.currentPage = 1;
         this.allCards = [];
-        this.loadCardsData();
+        //this.loadCardsData();
     }
-    loadCardsData() {
-        const getCards = new GetCards();
-        getCards.renderCards().then(data => {
-          this.allCards = data;
-          this.appendCards(this.currentPage);
-          this.scrollListener();
-          this.displayCardInfo();
-        });
-      }
 
-    appendCards(page) {
+    loadCardsData() {
+      return new Promise((resolve, reject) => {
+        const getCards = new GetCards();
+        getCards.renderCards()
+          .then(data => {
+            this.allCards = data;
+            this.appendCards(this.currentPage, this.allCards);
+            this.scrollListener();
+            this.displayCardInfo();
+            resolve(data); // Resolve the Promise with the data
+          })
+          .catch(error => {
+            reject(error); // Reject the Promise if there's an error
+          });
+      });
+    } 
+
+    appendCards(page, allCards) {
         const startIndex = (page - 1) * this.cardsPerPage;
         const endIndex = startIndex + this.cardsPerPage;
         let cardsLoaded = 0; // Initialize the counter
-        for (let i = startIndex; i < endIndex && i < this.allCards.length; i++) {
+        for (let i = startIndex; i < endIndex && i < allCards.length; i++) {
           // Render each card here
-            let card = this.allCards[i];
+            let card = allCards[i];
             const cardDiv = document.createElement('div');
             cardDiv.classList.add('card');
             cardDiv.setAttribute('data-card-id', card.id);
@@ -58,12 +66,19 @@ class RenderCards {
           const container = this.cardsList;
           if (container.scrollTop + container.clientHeight > container.scrollHeight - 5) {
             this.currentPage++;
+            if (this.searchCards && this.searchCards.searchRes.length > 0) {
+              this.appendCards(this.currentPage, this.searchCards.searchRes);
+              console.log(this.searchCards, 'SEARCH CARDS ASD')
+              //this.searchCards.searchRes = [];
+            } else {
+             
+              this.appendCards(this.currentPage, this.allCards);
+            }
             console.log(this.currentPage, ' CURRENT PAGE!!!')
-            this.appendCards(this.currentPage);
+            
           }
         });
       }
-     // appendCards(currentPage);
 
     convertToArrows(arr) {
       const arrowMap = {
@@ -113,23 +128,23 @@ class RenderCards {
               divCardInfoContainer.removeChild(divCardInfoContainer.firstChild);
             }
             // Card Name
-            const divCardName = this.createDivWithClass('card-name');
+            const divCardName = this.createElemWithClass('div', 'card-name');
             divCardName.textContent = cardData.name;
             cardInfoComponents.push(divCardName);
     
-            const divCardAttribute = this.createDivWithClass('card-attr');
+            const divCardAttribute = this.createElemWithClass('div', 'card-attr');
             divCardAttribute.textContent = `[${cardData.localizedAttribute}${cardData.localizedProperty ? `/${cardData.localizedProperty}` : ''}]`;
             cardInfoComponents.push(divCardAttribute);
             
             // Assign Monster Cards (ATK, DEF, Level, Link Arrows, etc.)
-            const divAtkAndDef = this.createDivWithClass('atk-def-container');
+            const divAtkAndDef = this.createElemWithClass('div', 'atk-def-container');
             this.assignMonsterCards(cardData, divAtkAndDef);
             if (divAtkAndDef.childNodes.length > 0) {
               cardInfoComponents.push(divAtkAndDef);
             }
 
             // Card Effect
-            // const divCardEffect = this.createDivWithClass('card-effect');
+            // const divCardEffect = this.createElemWithClass('card-effect');
             // divCardEffect.textContent = cardData.effectText;
             // cardInfoComponents.push(divCardEffect);
     
@@ -142,8 +157,8 @@ class RenderCards {
       });
     }
             
-    createDivWithClass(className) {
-      const div = document.createElement('div');
+    createElemWithClass(elem, className) {
+      const div = document.createElement(elem);
       div.classList.add(className);
       return div;
     }
@@ -158,13 +173,13 @@ class RenderCards {
       const componentPendEffect = [];
 
       if (cardData.hasOwnProperty('atk')) {
-        const divCardAtk = this.createDivWithClass('atk-def');
+        const divCardAtk = this.createElemWithClass('div', 'atk-def');
         divCardAtk.textContent = `ATK/${cardData.atk}`;
         componentsAtkDef.push(divCardAtk);
       } 
     
       if (cardData.hasOwnProperty('def')) {
-        const divCardDef = this.createDivWithClass('atk-def');
+        const divCardDef = this.createElemWithClass('div', 'atk-def');
         divCardDef.textContent = `DEF/${cardData.def}`;
         componentsAtkDef.push(divCardDef);
       }
@@ -172,49 +187,49 @@ class RenderCards {
       if (cardData.properties) {
         const thirdProperty = cardData.properties[2] ? '/' + cardData.properties[2] : '';
         const fourthProperty = cardData.properties[3] ? '/' + cardData.properties[3] : '';
-        const divCardProperties = this.createDivWithClass('props');
+        const divCardProperties = this.createElemWithClass('div', 'props');
         divCardProperties.textContent = `[${cardData.properties[0]}/${cardData.properties[1]}${thirdProperty}${fourthProperty}]`;
         componentsProperties.push(divCardProperties);
       }
 
       if (cardData.effectText) {
-        const divCardEffect = this.createDivWithClass('card-effect');
+        const divCardEffect = this.createElemWithClass('div', 'card-effect');
         divCardEffect.textContent = cardData.effectText;
         componentEffectText.push(divCardEffect);
       }
     
       if (cardData.hasOwnProperty('linkRating')) {
-        const divLinkRating = this.createDivWithClass('atk-def');
+        const divLinkRating = this.createElemWithClass('div', 'atk-def');
         divLinkRating.textContent = `Link-${cardData.linkRating}`;
         componentsAtkDef.push(divLinkRating);
       } 
     
       if (cardData.hasOwnProperty('level')) {
-        const divCardLvl = this.createDivWithClass('lvl');
+        const divCardLvl = this.createElemWithClass('div', 'lvl');
         divCardLvl.textContent = `☆${cardData.level}`;
         componentsRankLevel.push(divCardLvl);
       }
     
       if (cardData.hasOwnProperty('rank')) {
-        const divCardRank = this.createDivWithClass('rank');
+        const divCardRank = this.createElemWithClass('div', 'rank');
         divCardRank.textContent = `★${cardData.rank}`;
         componentsRankLevel.push(divCardRank);
       }
     
       if (cardData.hasOwnProperty('linkArrows')) {
-        const divLinkArrows = this.createDivWithClass('link-arrows');
+        const divLinkArrows = this.createElemWithClass('div', 'link-arrows');
         divLinkArrows.textContent = this.convertToArrows(cardData.linkArrows);
         componentsLinkArrows.push(divLinkArrows);
       }
 
       if (cardData.hasOwnProperty('pendScale')) {
-        const divCardPendScale = this.createDivWithClass('pend-scale');
+        const divCardPendScale = this.createElemWithClass('div', 'pend-scale');
         divCardPendScale.textContent = `◈${cardData.pendScale}`;
         componentPendScale.push(divCardPendScale);
       }
     
       if (cardData.pendEffect) {
-        const divCardPendEffect = this.createDivWithClass('pend-effect');
+        const divCardPendEffect = this.createElemWithClass('div', 'pend-effect');
         divCardPendEffect.textContent = `[Pendulum Effect]\n ${cardData.pendEffect}`;
         componentPendEffect.push(divCardPendEffect);
       }
@@ -230,7 +245,6 @@ class RenderCards {
             
  }
 
-const renderCards = new RenderCards();
+//const renderCards = new RenderCards();
 //renderCards.scrollListener()
-// Export any functions or modules you need
-//export { renderCards };
+// export { renderCards };

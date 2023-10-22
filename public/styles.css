@@ -1,6 +1,6 @@
 .cards-list-container {
-    width: 400px; /* Width of the container */
-    height: 600px; /* Height of the container */
+    width: 230px;
+    height: 600px; 
     border: 1px solid #ccc;
     overflow: hidden;
 }
@@ -9,4 +9,8 @@
     width: 100%; /* Full width of the container */
     height: 100%; /* Full height of the container */
     overflow: auto; /* Enable scrolling for overflow content */
+}
+
+.card img {
+    height: 280px;
 }
