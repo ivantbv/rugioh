@@ -21,6 +21,7 @@ export class RenderCards {
         this.cardsPerPage = 30;
         this.currentPage = 1;
         this.allCards = [];
+        this.originalAllCards = [];
         //this.loadCardsData();
     }
 
@@ -30,6 +31,7 @@ export class RenderCards {
         getCards.renderCards()
           .then(data => {
             this.allCards = data;
+            this.originalAllCards = [...data];
             this.appendCards(this.currentPage, this.allCards);
             this.scrollListener();
             this.displayCardInfo();

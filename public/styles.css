@@ -1,5 +1,5 @@
 .cards-list-container {
-    width: 230px;
+    width: 240px;
     height: 600px; 
     border: 1px solid #ccc;
     overflow: hidden;
@@ -12,5 +12,5 @@
 }
 
 .card img {
-    height: 280px;
+    height: 290px;
 }
