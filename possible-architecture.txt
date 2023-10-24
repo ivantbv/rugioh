@@ -2,13 +2,19 @@
 2. Need to create scripts in the src/ directory that will handle:
  -Card logic and interracation
  -DOM manipulation
- -Cards rendering (assign each card object to its own card with properties) - in the making
- -Card search, Card sort and different filters (text search, attribute search, card type, etc.)
+ -Cards rendering (assign each card object to its own card with properties) - done
+ -Card search, Card sort and different filters (text search, attribute search, type, etc) - in the making
 3. Decide how to optimize the rendering and fetching of the cards:
  -There are over 12 000 cards objects in the all_cards_data.json
  -Find a way to somehow cache the already loaded information in the user's browser
  -Maybe find a way to partly load the cards that only are at the visible part of the browser and
- dont load the other cards or disappear them as soon as they are above or under the browser's visibility
+ dont load the other cards or disappear them as soon as they are above or under the browser's visibility - DONE
  -Check for framework like Vue and its solutions for DOM.
 4. Think about the design and possible card animations and backgrounds
 5. For backend and hosting use Firebase and Amazon S3 (for storing assets)
+
+
+https://yugipedia.com/wiki/User:Dinoguy1000/icons - svg icons for monster types and attributes (not all though,
+missing Cyberse and Creator God and Wyrm)
+https://yugipedia.com/wiki/Type = png icons (take the ones that are not available as SVG - the wyrm,
+creator god, cyberse)
