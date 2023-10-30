@@ -99,8 +99,6 @@ class SearchCards {
         }
     }
 
-
-    //TO REWORK THIS METHOD
     narrowSearch() {
         const narrowSearchModal = renderCards.createElemWithClass('div', 'narrow-search-modal');
         const narrowSearchContainer = renderCards.createElemWithClass('div', 'narrow-search-container');
@@ -114,7 +112,7 @@ class SearchCards {
                 const container = renderCards.createElemWithClass('div', 'narrowsrch-checkbox-div');
                 container.innerHTML = `
                     <div class="checkbox-narrow-search">
-                        <input type="checkbox" id="${elem}" name="${elem}" value="${elem}" />
+                        <input type="checkbox" id="${elem}" name="narrow-search-settings" value="${elem}" />
                         <label for="${elem}">${elem}</label>
                     </div>`;
                 byCardFrameContainer.appendChild(container);
@@ -141,49 +139,77 @@ class SearchCards {
         //key search (tuner, synchro, gain control etc.)
         //forbidden/limited for when I get to understand how to fetch the banlists
     }
-    //TO REWORK THIS METHOD
+   
     updateCheckBoxChoice() {
         //check if the checkboxes are present in the DOM
          //add eventlistener to them
         const checkboxes = document.querySelectorAll('.checkbox-narrow-search');
+        const narrowSearchCheckboxes = 
+                        document.querySelectorAll("input[type=checkbox][name=narrow-search-settings]");
+        let chosenNarrowSettings = [];
+        narrowSearchCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                chosenNarrowSettings = 
+                    Array.from(narrowSearchCheckboxes)
+                    .filter(i => i.checked) // Use Array.filter to remove unchecked checkboxes.
+                    .map(i => i.value)
+                    console.log(chosenNarrowSettings, 'CHOSEN NARROW SETTINGS')
+            })
+        })
+        
         this.cardFrameNarrowBtn.addEventListener('click', () => {
             this.searchContainer.append(this.searchWithinDiv);
-            checkboxes.forEach(check => check.childNodes.forEach(checkbox => {
-                if (checkbox.checked) {
-                    console.log(checkbox.value);
-                    const chosenCardFrames = checkbox.value;
+            //checkboxes.forEach(check => check.childNodes.forEach(checkbox => {
+
+
+                if (chosenNarrowSettings.length > 0) {
+                    let narrowedCardFrames = []
+                    chosenNarrowSettings.forEach(searchStr => {
+                        const filteredCards = this.narrowByCardFrame(this.allCards, searchStr);
+                        narrowedCardFrames.push({ searchStr, filteredCards });
+                      });
+
+                    const NarrowedFrameCardsWithDuplicates =
+                        narrowedCardFrames.flatMap(result => result.filteredCards)
+                    
+                        //order the found cards by their frames (properties)!!!!!!!!!!!!!!!!!!!!!!!
+                    const updatedNarrowedFrameCards =
+                     this.removeDuplicatedCardObjects(NarrowedFrameCardsWithDuplicates);
+                   // const chosenCardFrames = chosenNarrowSettings.join(' ');
 
                     const checkBox = document.querySelector('input[name="search-all"]');
                     this.clearCardsList();
                     renderCards.currentPage = 1;
                     renderCards.cardsList.scrollTop = 0;
+
+                    console.log(updatedNarrowedFrameCards, 'NEW THIS CHECK NARROWED FRAME CARDS')
+
                     if(checkBox && checkBox.checked) {
-                        //clear all the cards from the cards container first.
-                        //вынести while цикл который очищает контейнер карт в отдельную функцию
-                        this.searchRes = this.narrowByCardFrame(this.allCards, chosenCardFrames);
+                        //order the found cards by their frames (properties)
+                        this.searchRes = updatedNarrowedFrameCards;
                         console.log(this.searchRes, 'search res')
                         //this.renderSearchResults(this.searchRes, searchStr);
                         renderCards.appendCards(renderCards.currentPage, this.searchRes);
                         checkBox.checked = true;
                     } else {
                         //clear all the cards from the cards container first.
-                        this.searchRes = this.narrowByCardFrame(this.allCards, chosenCardFrames);
+                        this.searchRes = updatedNarrowedFrameCards;
+                        //this.narrowByCardFrame(this.allCards, chosenCardFrames);
                         console.log(this.searchRes, 'search res')
                         renderCards.appendCards(renderCards.currentPage, this.searchRes);
                         //checkBox.checked = true;
                     }
 
-
-                    
                 }
-            }))
+            //}))
         })
        
         //write the checkboxes choice  in an array
         //feed it to narrowByCardFrame
         //get the result from narrowByCardFrame method and use rendrCards
     }
-
+    
+ //TO REWORK THIS METHOD
     narrowByCardFrame(cards, searchArr) {
         //turn searchArr into string
         //effect monster card frame can by union or spirit as well.
@@ -214,6 +240,18 @@ class SearchCards {
         while (renderCards.cardsList.hasChildNodes()) {
             renderCards.cardsList.removeChild(renderCards.cardsList.firstChild);
         }
+    }
+
+    removeDuplicatedCardObjects(cards) {
+        const uniqueCardsMap = cards.reduce((uniqueCards, card) => {
+            if (!uniqueCards[card.id]) {
+              uniqueCards[card.id] = card;
+            }
+            return uniqueCards;
+          }, {});
+          
+          // Convert the uniqueCards object back to an array
+          return Object.values(uniqueCardsMap);
     }
 }
 //console.log(renderCards.allCards, 'test')
