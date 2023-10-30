@@ -119,7 +119,7 @@ class SearchCards {
             });
         }
         createNarrowSearchCheckboxes("Normal", "Effect", "Ritual", "Pendulum",
-                                     "Fusion", "Synchro", "Xyz")
+                                     "Fusion", "Synchro", "Xyz", "Link")
         this.narrowSearchBtn.addEventListener('click', () => {
             this.searchContainer.append(narrowSearchModal);
             this.updateCheckBoxChoice();
@@ -159,8 +159,7 @@ class SearchCards {
         
         this.cardFrameNarrowBtn.addEventListener('click', () => {
             this.searchContainer.append(this.searchWithinDiv);
-            //checkboxes.forEach(check => check.childNodes.forEach(checkbox => {
-
+                //TO REFACTOR AND CLEAN THIS METHOD
 
                 if (chosenNarrowSettings.length > 0) {
                     let narrowedCardFrames = []
@@ -172,7 +171,7 @@ class SearchCards {
                     const NarrowedFrameCardsWithDuplicates =
                         narrowedCardFrames.flatMap(result => result.filteredCards)
                     
-                        //order the found cards by their frames (properties)!!!!!!!!!!!!!!!!!!!!!!!
+                    //order the found cards by their frames (properties)!!!!!!!!!!!!!!!!!!!!!!!
                     const updatedNarrowedFrameCards =
                      this.removeDuplicatedCardObjects(NarrowedFrameCardsWithDuplicates);
                    // const chosenCardFrames = chosenNarrowSettings.join(' ');
@@ -201,40 +200,36 @@ class SearchCards {
                     }
 
                 }
-            //}))
         })
-       
         //write the checkboxes choice  in an array
         //feed it to narrowByCardFrame
         //get the result from narrowByCardFrame method and use rendrCards
     }
     
- //TO REWORK THIS METHOD
-    narrowByCardFrame(cards, searchArr) {
-        //turn searchArr into string
-        //effect monster card frame can by union or spirit as well.
-
-        //const searchStr = "Effect Xyz";
-        let searchProperties = []; 
-        if (searchArr && searchArr.length > 1) {
-            searchProperties = searchArr.split(" ");
-        } else {
-            //searchProperties = ["Effect", "Ritual", "Pendulum", "Fusion", "Synchro", "Xyz"];
-            searchProperties = searchArr
-        }
+    narrowByCardFrame(cards, searchStr) {
+        const searchProperties = ["Normal", "Effect", "Ritual", 
+                                "Pendulum", "Fusion", "Synchro", 
+                                "Xyz", "Link"];
         
+        const isEffectSearch = searchStr === "Effect";
+      
         const filteredCards = cards.filter(card => {
-        const cardProperties = card.properties;
-
-        if (searchProperties.every(prop => cardProperties && cardProperties.includes(prop))) {
-            const otherProperties = cardProperties.filter(property => !searchProperties.includes(property));
-            return searchProperties.every(prop => !otherProperties.includes(prop));
-        }
-        return false;
+          if (card.properties) {
+            if (isEffectSearch) {
+              // Check if "Effect" is in the card's properties
+              if (card.properties.includes("Effect")) {
+                // Check if the card doesn't have other properties from searchProperties
+                return !searchProperties.some(prop => card.properties.includes(prop) && prop !== "Effect");
+              }
+            } else {
+              // For other search strings, just check if the exact searchStr is in the card's properties
+              return card.properties.includes(searchStr);
+            }
+          }
+          return false;
         });
-
         return filteredCards;
-    }
+      }
 
     clearCardsList() {
         while (renderCards.cardsList.hasChildNodes()) {
@@ -249,8 +244,6 @@ class SearchCards {
             }
             return uniqueCards;
           }, {});
-          
-          // Convert the uniqueCards object back to an array
           return Object.values(uniqueCardsMap);
     }
 }
