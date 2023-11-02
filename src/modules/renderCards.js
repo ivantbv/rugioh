@@ -116,9 +116,11 @@ export class RenderCards {
       if (previousCardInfoContainer) {
         body.removeChild(previousCardInfoContainer);
       }
+      console.log(this.cardsList, 'CARDS LIST!')
     
       this.cardsList.addEventListener('click', (event) => {
         const card = event.target.closest('.card');
+        console.log(card, 'EVENT CLICK CARD')
     
         if (card) {
           const cardId = card.getAttribute('data-card-id');
@@ -126,6 +128,13 @@ export class RenderCards {
     
           if (cardData) {
             const cardInfoComponents = [];
+            let divCardInfoContainer = document.querySelector('.card-info-container');
+
+            if (!divCardInfoContainer) {
+              divCardInfoContainer = document.createElement('div');
+              divCardInfoContainer.classList.add('card-info-container');
+            }
+
             while (divCardInfoContainer.hasChildNodes()) {
               divCardInfoContainer.removeChild(divCardInfoContainer.firstChild);
             }
@@ -149,7 +158,7 @@ export class RenderCards {
             // const divCardEffect = this.createElemWithClass('card-effect');
             // divCardEffect.textContent = cardData.effectText;
             // cardInfoComponents.push(divCardEffect);
-    
+            divCardInfoContainer.innerHTML = '';
             // Add all card info components to the card info container
             cardInfoComponents.forEach(component => divCardInfoContainer.appendChild(component));
             body.appendChild(divCardInfoContainer);

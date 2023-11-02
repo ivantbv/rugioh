@@ -5,6 +5,7 @@ renderCards.loadCardsData().then(data => {
 
           const searchCards = new SearchCards(data); //Create an instance of SearchCards and pass the data
           searchCards.search();
+          searchCards.narrowSearch();
           renderCards.searchCards = searchCards;
         });
 
@@ -24,7 +25,8 @@ class SearchCards {
         this.narrowSearchBtn.textContent = 'Narrow Search';
         this.cardFrameNarrowBtn = renderCards.createElemWithClass('button', 'card-frame-btn');
         this.cardFrameNarrowBtn.textContent = 'Search by card frame:';
-        this.narrowSearch();
+        this.updateCheckBoxChoice();
+        //this.narrowSearch();
     }
     search() {
         const searchBar = renderCards.createElemWithClass('input', 'search-cards');
@@ -53,6 +55,7 @@ class SearchCards {
                 this.renderSearchResults(this.searchRes, searchStr);
                 checkBox.checked = true;
             } else {
+                renderCards.allCards = [...renderCards.originalAllCards];
                 this.renderSearchResults(this.allCards, searchStr);
                 checkBox.checked = true;
             }
@@ -160,11 +163,33 @@ class SearchCards {
         this.cardFrameNarrowBtn.addEventListener('click', () => {
             this.searchContainer.append(this.searchWithinDiv);
                 //TO REFACTOR AND CLEAN THIS METHOD
+                //if (!this.searchRes) {}
+                this.searchContainer.append(this.searchWithinDiv);
+                const checkBox = document.querySelector('input[name="search-all"]');
+                // if (checkBox && checkBox.checked) {
+                //     this.allCards = this.searchRes
+                // } else {
+                //     this.allCards = [...renderCards.originalAllCards];
+                // }
+                this.clearCardsList();
+                renderCards.currentPage = 1;
+                renderCards.cardsList.scrollTop = 0;
+                // if (this.searchRes.length < 1) return;
 
+                if (checkBox && !checkBox.checked) {
+                    renderCards.allCards = [...renderCards.originalAllCards];
+                }
+                if (checkBox && checkBox.checked) {
+                    renderCards.allCards = this.searchRes;
+                }
+                
                 if (chosenNarrowSettings.length > 0) {
+                    console.log(checkBox.checked, 'ESLI CHECKED')
                     let narrowedCardFrames = []
+                   
                     chosenNarrowSettings.forEach(searchStr => {
-                        const filteredCards = this.narrowByCardFrame(this.allCards, searchStr);
+                        const filteredCards = this.narrowByCardFrame(checkBox && 
+                            checkBox.checked ? this.searchRes : this.allCards, searchStr);
                         narrowedCardFrames.push({ searchStr, filteredCards });
                       });
 
@@ -176,27 +201,36 @@ class SearchCards {
                      this.removeDuplicatedCardObjects(NarrowedFrameCardsWithDuplicates);
                    // const chosenCardFrames = chosenNarrowSettings.join(' ');
 
-                    const checkBox = document.querySelector('input[name="search-all"]');
-                    this.clearCardsList();
-                    renderCards.currentPage = 1;
-                    renderCards.cardsList.scrollTop = 0;
-
-                    console.log(updatedNarrowedFrameCards, 'NEW THIS CHECK NARROWED FRAME CARDS')
-
+                    console.log(updatedNarrowedFrameCards, 'NEW THIS CHECK NARROWED FRAME CARDS', 
+                    this.searchRes, 'all cards:', this.allCards);
+                    this.searchRes = updatedNarrowedFrameCards
+                    if (!updatedNarrowedFrameCards || updatedNarrowedFrameCards.length < 1 &&
+                        checkBox.checked) {
+                        this.searchRes = updatedNarrowedFrameCards;
+                       // renderCards.appendCards(renderCards.currentPage, this.searchRes);
+                        checkBox.checked = true;
+                        this.clearCardsList();
+                        return;
+                    }
+                
                     if(checkBox && checkBox.checked) {
                         //order the found cards by their frames (properties)
+                        this.clearCardsList();
                         this.searchRes = updatedNarrowedFrameCards;
                         console.log(this.searchRes, 'search res')
                         //this.renderSearchResults(this.searchRes, searchStr);
                         renderCards.appendCards(renderCards.currentPage, this.searchRes);
                         checkBox.checked = true;
+                        return;
                     } else {
+                        this.clearCardsList();
                         //clear all the cards from the cards container first.
                         this.searchRes = updatedNarrowedFrameCards;
                         //this.narrowByCardFrame(this.allCards, chosenCardFrames);
                         console.log(this.searchRes, 'search res')
                         renderCards.appendCards(renderCards.currentPage, this.searchRes);
                         //checkBox.checked = true;
+                        return
                     }
 
                 }
@@ -206,6 +240,9 @@ class SearchCards {
         //get the result from narrowByCardFrame method and use rendrCards
     }
     
+    //a slight bug when searching for Ritual - there will be also one Ritual/Pendulum/Effect
+    //monster within the Ritual only search. 
+    //NEXT - TO ADD SPELL/TRAP CARDS TO THE SEARCH CRITERIA!!!!
     narrowByCardFrame(cards, searchStr) {
         const searchProperties = ["Normal", "Effect", "Ritual", 
                                 "Pendulum", "Fusion", "Synchro", 
