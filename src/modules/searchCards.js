@@ -25,6 +25,9 @@ class SearchCards {
         this.narrowSearchBtn.textContent = 'Narrow Search';
         this.cardFrameNarrowBtn = renderCards.createElemWithClass('button', 'card-frame-btn');
         this.cardFrameNarrowBtn.textContent = 'Search by card frame:';
+        this.resetSearchBtn = renderCards.createElemWithClass('button', 'reset-search-btn');
+        this.resetSearchBtn.textContent = 'Reset Search';
+
         this.updateCheckBoxChoice();
         //this.narrowSearch();
     }
@@ -32,8 +35,7 @@ class SearchCards {
         const searchBar = renderCards.createElemWithClass('input', 'search-cards');
         const searchBtn = renderCards.createElemWithClass('button', 'search-cards-btn');
         const numberOfFoundCards = renderCards.createElemWithClass('div', 'found-cards-div');
-        const resetSearchBtn = renderCards.createElemWithClass('button', 'reset-search-btn');
-        resetSearchBtn.textContent = 'Reset Search';
+
         searchBtn.textContent = 'Search';
         searchBar.setAttribute('type', 'text');
         searchBar.placeholder = 'Type to search cards...';
@@ -64,10 +66,10 @@ class SearchCards {
             numberOfFoundCards.style.display = 'block';
             numberOfFoundCards.innerHTML = `<b>${this.searchRes.length}</b> cards have met the search criteria`
             
-            this.searchContainer.append(resetSearchBtn);
+            this.searchContainer.append(this.resetSearchBtn);
         })
 
-        resetSearchBtn.addEventListener('click', () => {
+        this.resetSearchBtn.addEventListener('click', () => {
             const checkBox = document.querySelector('input[name="search-all"]');
 
             renderCards.currentPage = 1;
@@ -77,7 +79,7 @@ class SearchCards {
             this.searchRes = [];
             renderCards.appendCards(renderCards.currentPage, renderCards.allCards);
             numberOfFoundCards.style.display = 'none';
-            this.searchContainer.removeChild(resetSearchBtn);
+            this.searchContainer.removeChild(this.resetSearchBtn);
             this.searchContainer.removeChild(this.searchWithinDiv);
             checkBox.checked = false;
         })
@@ -122,7 +124,7 @@ class SearchCards {
             });
         }
         createNarrowSearchCheckboxes("Normal", "Effect", "Ritual", "Pendulum",
-                                     "Fusion", "Synchro", "Xyz", "Link")
+                                     "Fusion", "Synchro", "Xyz", "Link", "Spell", "Trap")
         this.narrowSearchBtn.addEventListener('click', () => {
             this.searchContainer.append(narrowSearchModal);
             this.updateCheckBoxChoice();
@@ -161,7 +163,8 @@ class SearchCards {
         })
         
         this.cardFrameNarrowBtn.addEventListener('click', () => {
-            this.searchContainer.append(this.searchWithinDiv);
+            //this.searchContainer.append(resetSearchBtn);
+            this.searchContainer.append(this.searchWithinDiv, this.resetSearchBtn);
                 //TO REFACTOR AND CLEAN THIS METHOD
                 //if (!this.searchRes) {}
                 this.searchContainer.append(this.searchWithinDiv);
@@ -251,21 +254,25 @@ class SearchCards {
         const isEffectSearch = searchStr === "Effect";
       
         const filteredCards = cards.filter(card => {
-          if (card.properties) {
-            if (isEffectSearch) {
-              // Check if "Effect" is in the card's properties
-              if (card.properties.includes("Effect")) {
-                // Check if the card doesn't have other properties from searchProperties
-                return !searchProperties.some(prop => card.properties.includes(prop) && prop !== "Effect");
-              }
-            } else {
-              // For other search strings, just check if the exact searchStr is in the card's properties
-              return card.properties.includes(searchStr);
+            if (!card.properties && card.localizedAttribute) {
+                //its a spell or trap card
+                return card.localizedAttribute.includes(searchStr.toUpperCase());
             }
-          }
-          return false;
-        });
-        return filteredCards;
+            if (card.properties) {
+                if (isEffectSearch) {
+                // Check if "Effect" is in the card's properties
+                if (card.properties.includes("Effect")) {
+                    // Check if the card doesn't have other properties from searchProperties
+                    return !searchProperties.some(prop => card.properties.includes(prop) && prop !== "Effect");
+                }
+                } else {
+                // For other search strings, just check if the exact searchStr is in the card's properties
+                return card.properties.includes(searchStr);
+                }
+            }
+            return false;
+            });
+            return filteredCards;
       }
 
     clearCardsList() {
