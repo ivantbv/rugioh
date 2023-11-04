@@ -29,24 +29,24 @@ class SearchCards {
         this.resetSearchBtn.textContent = 'Reset Search';
     
         this.resetSearchBtn.addEventListener('click', this.resetSearch.bind(this));
-    
-        this.updateCheckBoxChoice();
+        this.numberOfFoundCards = this.createElemWithClass('div', 'found-cards-div');
+        this.updateCheckBoxChoiceCardFrame('narrow-search-settings', this.narrowByCardFrame);
         this.narrowSearch();
     }
     
     search() {
         const searchBar = this.createElemWithClass('input', 'search-cards');
         const searchBtn = this.createElemWithClass('button', 'search-cards-btn');
-        const numberOfFoundCards = this.createElemWithClass('div', 'found-cards-div');
+        //const numberOfFoundCards = this.createElemWithClass('div', 'found-cards-div');
     
         searchBtn.textContent = 'Search';
         searchBar.setAttribute('type', 'text');
         searchBar.placeholder = 'Type to search cards...';
-        this.searchContainer.append(searchBar, searchBtn, numberOfFoundCards, this.narrowSearchBtn);
+        this.searchContainer.append(searchBar, searchBtn, this.numberOfFoundCards, this.narrowSearchBtn);
         const body = document.querySelector('body');
         body.append(this.searchContainer);
     
-        searchBtn.addEventListener('click', this.performSearch.bind(this, searchBar, numberOfFoundCards));
+        searchBtn.addEventListener('click', this.performSearch.bind(this, searchBar, this.numberOfFoundCards));
     }
     
     performSearch(searchBar, numberOfFoundCards) {
@@ -68,10 +68,15 @@ class SearchCards {
         checkBox.checked = true;
         }
     
+        // numberOfFoundCards.style.display = 'block';
+        // numberOfFoundCards.innerHTML = `<b>${this.searchRes.length}</b> cards have met the search criteria`;
+        this.displayNumberOfFoundCards(numberOfFoundCards);
+        this.searchContainer.append(this.resetSearchBtn);
+    }
+
+    displayNumberOfFoundCards(numberOfFoundCards) {
         numberOfFoundCards.style.display = 'block';
         numberOfFoundCards.innerHTML = `<b>${this.searchRes.length}</b> cards have met the search criteria`;
-    
-        this.searchContainer.append(this.resetSearchBtn);
     }
     
     resetSearch() {
@@ -120,7 +125,7 @@ class SearchCards {
             document.body.appendChild(this.narrowSearchModal);
           }
         
-          this.updateCheckBoxChoice();
+          this.updateCheckBoxChoiceCardFrame('narrow-search-settings', this.narrowByCardFrame);
         
           this.narrowSearchBtn.addEventListener('click', () => {
             // Show the modal when the button is clicked
@@ -142,12 +147,12 @@ class SearchCards {
     
     showNarrowSearchModal(narrowSearchModal) {
         this.searchContainer.append(narrowSearchModal);
-        this.updateCheckBoxChoice();
+        this.updateCheckBoxChoiceCardFrame('narrow-search-settings', this.narrowByCardFrame);
     }
-    
-    updateCheckBoxChoice() {
+    //try to use this method for narrowByMonsterType
+    updateCheckBoxChoiceCardFrame(narrowSearchSettings, narrowBy) {
         const checkboxes = document.querySelectorAll('.checkbox-narrow-search');
-        const narrowSearchCheckboxes = document.querySelectorAll("input[type=checkbox][name=narrow-search-settings]");
+        const narrowSearchCheckboxes = document.querySelectorAll(`input[type=checkbox][name=${narrowSearchSettings}]`);
         let chosenNarrowSettings = [];
         narrowSearchCheckboxes.forEach((checkbox) => {
         checkbox.addEventListener('change', () => {
@@ -176,7 +181,7 @@ class SearchCards {
                 let narrowedCardFrames = [];
         
                 chosenNarrowSettings.forEach((searchStr) => {
-                    const filteredCards = this.narrowByCardFrame(checkBox && checkBox.checked ? this.searchRes : this.allCards, searchStr);
+                    const filteredCards = narrowBy(checkBox && checkBox.checked ? this.searchRes : this.allCards, searchStr);
                     narrowedCardFrames.push({ searchStr, filteredCards });
                 });
         
@@ -191,6 +196,7 @@ class SearchCards {
                     this.searchRes = updatedNarrowedFrameCards;
                     checkBox.checked = true;
                     this.clearCardsList();
+                    this.displayNumberOfFoundCards(this.numberOfFoundCards);
                     return;
                 }
         
@@ -200,12 +206,14 @@ class SearchCards {
                     console.log(this.searchRes, 'search res');
                     renderCards.appendCards(renderCards.currentPage, this.searchRes);
                     checkBox.checked = true;
+                    this.displayNumberOfFoundCards(this.numberOfFoundCards);
                     return;
                 } else {
                     this.clearCardsList();
                     this.searchRes = updatedNarrowedFrameCards;
                     console.log(this.searchRes, 'search res');
                     renderCards.appendCards(renderCards.currentPage, this.searchRes);
+                    this.displayNumberOfFoundCards(this.numberOfFoundCards);
                     return;
                 }
             }
@@ -230,6 +238,16 @@ class SearchCards {
         }
         return false;
         });
+        return filteredCards;
+    }
+
+    narrowByMonsterType(cards, searchStr) {
+        const filteredCards = cards.filter((card) => {
+            if (card.localizedAttribute) {
+                return card.localizedAttribute.includes(searchStr.toUpperCase());
+            }
+                return false;
+            });
         return filteredCards;
     }
     
