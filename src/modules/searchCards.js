@@ -25,12 +25,16 @@ class SearchCards {
         this.narrowSearchBtn.textContent = 'Narrow Search';
         this.cardFrameNarrowBtn = this.createElemWithClass('button', 'card-frame-btn');
         this.cardFrameNarrowBtn.textContent = 'Search by card frame:';
+        this.monsterAttributeNarrowBtn = this.createElemWithClass('button', 'monster-attr-btn');
+        this.monsterAttributeNarrowBtn.textContent = 'Search by attribute:';
         this.resetSearchBtn = this.createElemWithClass('button', 'reset-search-btn');
         this.resetSearchBtn.textContent = 'Reset Search';
     
         this.resetSearchBtn.addEventListener('click', this.resetSearch.bind(this));
         this.numberOfFoundCards = this.createElemWithClass('div', 'found-cards-div');
-        this.updateCheckBoxChoiceCardFrame('narrow-search-settings', this.narrowByCardFrame);
+        this.chosenNarrowSettings = [];
+        //this.performNarrowSearch('narrow-search-settings', this.narrowByCardFrame, this.cardFrameNarrowBtn);
+        //this.performNarrowSearch('type-search-settings', this.narrowByMonsterAttribute, this.monsterAttributeNarrowBtn)
         this.narrowSearch();
     }
     
@@ -116,16 +120,23 @@ class SearchCards {
         
             const narrowSearchContainer = this.createElemWithClass('div', 'narrow-search-container');
             const byCardFrameContainer = this.createElemWithClass('div', 'card-frame-cont');
-        
+            const byMonsterAttrContainer = this.createElemWithClass('div', 'monster-type-cont');
+
             byCardFrameContainer.append(this.cardFrameNarrowBtn);
+            byMonsterAttrContainer.append(this.monsterAttributeNarrowBtn)
             narrowSearchContainer.append(byCardFrameContainer);
-            this.createNarrowSearchCheckboxes(byCardFrameContainer, "Normal", "Effect", "Ritual", "Pendulum", "Fusion", "Synchro", "Xyz", "Link", "Spell", "Trap");
-        
+            narrowSearchContainer.append(byMonsterAttrContainer);
+            this.createNarrowSearchCheckboxes(byCardFrameContainer, "Normal", "Effect", "Ritual", 
+                                                                    "Pendulum", "Fusion", "Synchro", 
+                                                                    "Xyz", "Link", "Spell", "Trap");
+            this.createNarrowSearchCheckboxes(byMonsterAttrContainer, "DARK", "DIVINE", "EARTH", "FIRE", 
+                                                                    "LIGHT", "WATER", "WIND");
             this.narrowSearchModal.append(narrowSearchContainer);
             document.body.appendChild(this.narrowSearchModal);
           }
         
-          this.updateCheckBoxChoiceCardFrame('narrow-search-settings', this.narrowByCardFrame);
+          this.performNarrowSearch('narrow-search-settings', this.narrowByCardFrame, this.cardFrameNarrowBtn);
+          this.performNarrowSearch('type-search-settings', this.narrowByMonsterAttribute, this.monsterAttributeNarrowBtn)
         
           this.narrowSearchBtn.addEventListener('click', () => {
             // Show the modal when the button is clicked
@@ -147,21 +158,23 @@ class SearchCards {
     
     showNarrowSearchModal(narrowSearchModal) {
         this.searchContainer.append(narrowSearchModal);
-        this.updateCheckBoxChoiceCardFrame('narrow-search-settings', this.narrowByCardFrame);
+        this.performNarrowSearch('narrow-search-settings', this.narrowByCardFrame, this.cardFrameNarrowBtn);
+        this.performNarrowSearch('type-search-settings', this.narrowByMonsterAttribute, this.monsterAttributeNarrowBtn)
     }
-    //try to use this method for narrowByMonsterType
-    updateCheckBoxChoiceCardFrame(narrowSearchSettings, narrowBy) {
+    //try to use this method for narrowByMonsterAttribute
+    performNarrowSearch(narrowSearchSettings, narrowBy, narrowSearchButton) {
         const checkboxes = document.querySelectorAll('.checkbox-narrow-search');
         const narrowSearchCheckboxes = document.querySelectorAll(`input[type=checkbox][name=${narrowSearchSettings}]`);
-        let chosenNarrowSettings = [];
+        //let chosenNarrowSettings = [];
         narrowSearchCheckboxes.forEach((checkbox) => {
-        checkbox.addEventListener('change', () => {
-            chosenNarrowSettings = Array.from(narrowSearchCheckboxes).filter((i) => i.checked).map((i) => i.value);
-            console.log(chosenNarrowSettings, 'CHOSEN NARROW SETTINGS');
-        });
+            checkbox.addEventListener('change', () => {
+                this.chosenNarrowSettings = Array.from(narrowSearchCheckboxes).filter((i) => i.checked).map((i) => i.value);
+                console.log(this.chosenNarrowSettings, 'CHOSEN NARROW SETTINGS');
+            });
         });
     
-        this.cardFrameNarrowBtn.addEventListener('click', () => {
+        narrowSearchButton.addEventListener('click', () => {
+            console.log(this.chosenNarrowSettings, 'CHOSEN NARROW SETTINGS inside narrowSearchButton');
             this.searchContainer.append(this.resetSearchBtn);
             this.searchContainer.append(this.searchWithinDiv);
             const checkBox = document.querySelector('input[name="search-all"]');
@@ -171,20 +184,22 @@ class SearchCards {
         
             if (checkBox && !checkBox.checked) {
                 renderCards.allCards = [...renderCards.originalAllCards];
+               
             }
             if (checkBox && checkBox.checked) {
                 renderCards.allCards = this.searchRes;
             }
-    
-            if (chosenNarrowSettings.length > 0) {
+            console.log(this.chosenNarrowSettings, 'narrow setting')
+            if (this.chosenNarrowSettings.length > 0) {
+                
                 console.log(checkBox.checked, 'ESLI CHECKED');
                 let narrowedCardFrames = [];
         
-                chosenNarrowSettings.forEach((searchStr) => {
+                this.chosenNarrowSettings.forEach((searchStr) => {
                     const filteredCards = narrowBy(checkBox && checkBox.checked ? this.searchRes : this.allCards, searchStr);
                     narrowedCardFrames.push({ searchStr, filteredCards });
                 });
-        
+                
                 const NarrowedFrameCardsWithDuplicates = 
                                 narrowedCardFrames.flatMap((result) => result.filteredCards);
         
@@ -207,6 +222,7 @@ class SearchCards {
                     renderCards.appendCards(renderCards.currentPage, this.searchRes);
                     checkBox.checked = true;
                     this.displayNumberOfFoundCards(this.numberOfFoundCards);
+                    console.log(this.searchRes, 'SEARCH RESS ARR HERE')
                     return;
                 } else {
                     this.clearCardsList();
@@ -214,6 +230,7 @@ class SearchCards {
                     console.log(this.searchRes, 'search res');
                     renderCards.appendCards(renderCards.currentPage, this.searchRes);
                     this.displayNumberOfFoundCards(this.numberOfFoundCards);
+                    console.log(this.searchRes, 'SEARCH RESS ARR HERE')
                     return;
                 }
             }
@@ -241,13 +258,14 @@ class SearchCards {
         return filteredCards;
     }
 
-    narrowByMonsterType(cards, searchStr) {
+    narrowByMonsterAttribute(cards, searchStr) {
         const filteredCards = cards.filter((card) => {
             if (card.localizedAttribute) {
                 return card.localizedAttribute.includes(searchStr.toUpperCase());
             }
                 return false;
             });
+        console.log('filtered cards', filteredCards);
         return filteredCards;
     }
     
