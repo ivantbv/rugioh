@@ -126,17 +126,19 @@ class SearchCards {
             byMonsterAttrContainer.append(this.monsterAttributeNarrowBtn)
             narrowSearchContainer.append(byCardFrameContainer);
             narrowSearchContainer.append(byMonsterAttrContainer);
-            this.createNarrowSearchCheckboxes(byCardFrameContainer, "Normal", "Effect", "Ritual", 
+            this.createNarrowSearchCheckboxes(byCardFrameContainer, "narrow-search-settings", 
+                                                                    "Normal", "Effect", "Ritual", 
                                                                     "Pendulum", "Fusion", "Synchro", 
                                                                     "Xyz", "Link", "Spell", "Trap");
-            this.createNarrowSearchCheckboxes(byMonsterAttrContainer, "DARK", "DIVINE", "EARTH", "FIRE", 
+            this.createNarrowSearchCheckboxes(byMonsterAttrContainer, "attr-search-settings", 
+                                                                    "DARK", "DIVINE", "EARTH", "FIRE", 
                                                                     "LIGHT", "WATER", "WIND");
             this.narrowSearchModal.append(narrowSearchContainer);
             document.body.appendChild(this.narrowSearchModal);
           }
         
           this.performNarrowSearch('narrow-search-settings', this.narrowByCardFrame, this.cardFrameNarrowBtn);
-          this.performNarrowSearch('type-search-settings', this.narrowByMonsterAttribute, this.monsterAttributeNarrowBtn)
+          this.performNarrowSearch('attr-search-settings', this.narrowByMonsterAttribute, this.monsterAttributeNarrowBtn)
         
           this.narrowSearchBtn.addEventListener('click', () => {
             // Show the modal when the button is clicked
@@ -144,12 +146,12 @@ class SearchCards {
           });
     }
     
-    createNarrowSearchCheckboxes(container, ...elems) {
+    createNarrowSearchCheckboxes(container, searchSettings, ...elems) {
         elems.map((elem) => {
         const checkboxContainer = this.createElemWithClass('div', 'narrowsrch-checkbox-div');
         checkboxContainer.innerHTML = `
             <div class="checkbox-narrow-search">
-            <input type="checkbox" id="${elem}" name="narrow-search-settings" value="${elem}" />
+            <input type="checkbox" id="${elem}" name="${searchSettings}" value="${elem}" />
             <label for="${elem}">${elem}</label>
             </div>`;
         container.appendChild(checkboxContainer);
@@ -166,14 +168,17 @@ class SearchCards {
         const checkboxes = document.querySelectorAll('.checkbox-narrow-search');
         const narrowSearchCheckboxes = document.querySelectorAll(`input[type=checkbox][name=${narrowSearchSettings}]`);
         //let chosenNarrowSettings = [];
-        narrowSearchCheckboxes.forEach((checkbox) => {
-            checkbox.addEventListener('change', () => {
-                this.chosenNarrowSettings = Array.from(narrowSearchCheckboxes).filter((i) => i.checked).map((i) => i.value);
-                console.log(this.chosenNarrowSettings, 'CHOSEN NARROW SETTINGS');
-            });
-        });
+       
     
         narrowSearchButton.addEventListener('click', () => {
+            narrowSearchCheckboxes.forEach((checkbox) => {
+                if (checkbox.checked) {
+                    this.chosenNarrowSettings = 
+                        Array.from(narrowSearchCheckboxes).filter((i) => i.checked).map((i) => i.value);
+                    console.log(this.chosenNarrowSettings, 'CHOSEN NARROW SETTINGS');
+                }     
+            });
+
             console.log(this.chosenNarrowSettings, 'CHOSEN NARROW SETTINGS inside narrowSearchButton');
             this.searchContainer.append(this.resetSearchBtn);
             this.searchContainer.append(this.searchWithinDiv);
@@ -236,7 +241,7 @@ class SearchCards {
             }
         });
     }
-    
+    //Illusion Type is also a type (like Warrior, Beast etc)
     narrowByCardFrame(cards, searchStr) {
         const searchProperties = ["Normal", "Effect", "Ritual", "Pendulum", "Fusion", "Synchro", "Xyz", "Link"];
         const isEffectSearch = searchStr === "Effect";
