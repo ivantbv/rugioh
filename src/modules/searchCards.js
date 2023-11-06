@@ -27,6 +27,8 @@ class SearchCards {
         this.cardFrameNarrowBtn.textContent = 'Search by card frame:';
         this.monsterAttributeNarrowBtn = this.createElemWithClass('button', 'monster-attr-btn');
         this.monsterAttributeNarrowBtn.textContent = 'Search by attribute:';
+        this.monsterTypeNarrowBtn = this.createElemWithClass('button', 'monster-attr-btn');
+        this.monsterTypeNarrowBtn.textContent = 'Search by type:';
         this.resetSearchBtn = this.createElemWithClass('button', 'reset-search-btn');
         this.resetSearchBtn.textContent = 'Reset Search';
     
@@ -120,12 +122,15 @@ class SearchCards {
         
             const narrowSearchContainer = this.createElemWithClass('div', 'narrow-search-container');
             const byCardFrameContainer = this.createElemWithClass('div', 'card-frame-cont');
-            const byMonsterAttrContainer = this.createElemWithClass('div', 'monster-type-cont');
+            const byMonsterAttrContainer = this.createElemWithClass('div', 'monster-attr-cont');
+            const byMonsterTypeContainer = this.createElemWithClass('div', 'monster-type-cont')
 
             byCardFrameContainer.append(this.cardFrameNarrowBtn);
-            byMonsterAttrContainer.append(this.monsterAttributeNarrowBtn)
+            byMonsterAttrContainer.append(this.monsterAttributeNarrowBtn);
+            byMonsterTypeContainer.append(this.monsterTypeNarrowBtn)
             narrowSearchContainer.append(byCardFrameContainer);
             narrowSearchContainer.append(byMonsterAttrContainer);
+            narrowSearchContainer.append(byMonsterTypeContainer);
             this.createNarrowSearchCheckboxes(byCardFrameContainer, "narrow-search-settings", 
                                                                     "Normal", "Effect", "Ritual", 
                                                                     "Pendulum", "Fusion", "Synchro", 
@@ -133,13 +138,23 @@ class SearchCards {
             this.createNarrowSearchCheckboxes(byMonsterAttrContainer, "attr-search-settings", 
                                                                     "DARK", "DIVINE", "EARTH", "FIRE", 
                                                                     "LIGHT", "WATER", "WIND");
+            this.createNarrowSearchCheckboxes(byMonsterTypeContainer, 'type-search-settings',
+                                                                    'Aqua', 'Beast', 'Beast-Warrior', 
+                                                                    'Cyberse', 'Dinosaur', 'Divine-Beast', 
+                                                                    'Dragon', 'Fairy', 'Fiend', 
+                                                                    'Fish', 'Insect', 'Machine', 
+                                                                    'Plant', 'Psychic', 'Pyro', 
+                                                                    'Reptile', 'Rock', 'Sea Serpent', 
+                                                                    'Spellcaster', 'Thunder', 'Warrior', 
+                                                                    'Winged Beast', 'Wyrm', 'Zombie')
             this.narrowSearchModal.append(narrowSearchContainer);
             document.body.appendChild(this.narrowSearchModal);
           }
         
           this.performNarrowSearch('narrow-search-settings', this.narrowByCardFrame, this.cardFrameNarrowBtn);
           this.performNarrowSearch('attr-search-settings', this.narrowByMonsterAttribute, this.monsterAttributeNarrowBtn)
-        
+          this.performNarrowSearch('type-search-settings', this.narrowByCardFrame, this.monsterTypeNarrowBtn);
+
           this.narrowSearchBtn.addEventListener('click', () => {
             // Show the modal when the button is clicked
             this.narrowSearchModal.style.display = 'block';
