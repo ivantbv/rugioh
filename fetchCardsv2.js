@@ -16,12 +16,12 @@ const extraCardInfoUrl = 'https://github.com/yugioh-neuron-data/tcg-android/tree
 const ALL_CARDS_DATA = [];
 let fileUrls = [];
 let extraCardFileUrls = [];
-const startId = 18901; //change to new value 17401
-const endId = 19000; //
+const startId = 19000; //change to new value 18928
+const endId = 19299; //
 
 const outputFilePath = path.join(__dirname, 'data', 'all_cards_data.json');
 
-const delayBetweenRequests = 6000; // 5 seconds
+const delayBetweenRequests = 6000; // 6 seconds
 const maxRetries = 1;
 const retryDelay = 1000;
 
@@ -97,24 +97,28 @@ async function processData() {
             const parsedExtraCardData = JSON.parse(jsonStringExtraCardData);
             parsedCardData.releaseDate = parsedExtraCardData.sales_at;
 
-            let cardImg;
-            const id = parsedCardData.id;
-            if (id < 10000) {
-              const numberForImageURL = convertNumber(id);
-              cardImg = `https://raw.githubusercontent.com/yugioh-artworks/artworks-en-n.ygorganization.com/main/0/${numberForImageURL}_1.png`;
+            const existingCardIndex = ALL_CARDS_DATA.findIndex((card) => card.id === parsedCardData.id);
+            if (existingCardIndex === -1) {
+              let cardImg;
+              const id = parsedCardData.id;
+              if (id < 10000) {
+                const numberForImageURL = convertNumber(id);
+                cardImg = `https://raw.githubusercontent.com/yugioh-artworks/artworks-en-n.ygorganization.com/main/0/${numberForImageURL}_1.png`;
+              }
+              if (id >= 10000) {
+                const numberForImageURL = convertToSlashedNumber(id);
+                cardImg = `https://raw.githubusercontent.com/yugioh-artworks/artworks-en-n.ygorganization.com/main/${numberForImageURL}_1.png`;
+              }
+              parsedCardData.cardImage = cardImg;
+              ALL_CARDS_DATA.push(parsedCardData);
+  
+              // Save ALL_CARDS_DATA to the output file
+              fs.writeFileSync(outputFilePath, JSON.stringify(ALL_CARDS_DATA, null, 2), 'utf-8');
+              //fs.writeFileSync(outputFilePath, JSON.stringify(ALL_CARDS_DATA), 'utf-8');
+              console.log(`Card Data for ID ${id} processed and saved.`);
+            } else {
+              console.log(`Card with ID ${parsedCardData.id} already exists. Skipping...`);
             }
-            if (id >= 10000) {
-              const numberForImageURL = convertToSlashedNumber(id);
-              cardImg = `https://raw.githubusercontent.com/yugioh-artworks/artworks-en-n.ygorganization.com/main/${numberForImageURL}_1.png`;
-            }
-            parsedCardData.cardImage = cardImg;
-            ALL_CARDS_DATA.push(parsedCardData);
-
-            // Save ALL_CARDS_DATA to the output file
-            fs.writeFileSync(outputFilePath, JSON.stringify(ALL_CARDS_DATA, null, 2), 'utf-8');
-            //fs.writeFileSync(outputFilePath, JSON.stringify(ALL_CARDS_DATA), 'utf-8');
-            console.log(`Card Data for ID ${id} processed and saved.`);
-
           } catch (error) {
             console.error(`Error parsing JSON for ID ${id}: ${error}`);
           }
