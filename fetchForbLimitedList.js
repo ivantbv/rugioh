@@ -10,7 +10,7 @@ import cheerio from 'cheerio';
 const __dirname = path.resolve(path.dirname(''));
 
 const baseUrl = 'https://www.db.yugioh-card.com/yugiohdb/forbidden_limited.action?forbiddenLimitedDate=';
-const forbiddenLimitedDate = '2012-03-01';
+const forbiddenLimitedDate = '2012-09-01' //'2012-03-01';
 let fileUrls = [];
 
 const outputFilePath = path.join(__dirname, 'data', 'forbidden_limited_list.json');
@@ -19,13 +19,30 @@ const delayBetweenRequests = 6000; // 6 seconds
 const maxRetries = 1;
 const retryDelay = 1000;
 
-if (fs.existsSync(outputFilePath)) {
-  const existingData = fs.readFileSync(outputFilePath, 'utf8');
-  // Assuming FORBIDDEN_LIMITED_LIST is an array
-  const existingList = JSON.parse(existingData);
-  // Append existing data to FORBIDDEN_LIMITED_LIST
-  FORBIDDEN_LIMITED_LIST.push(...existingList);
+// if (fs.existsSync(outputFilePath)) {
+//   const existingData = fs.readFileSync(outputFilePath, 'utf8');
+//   // Assuming FORBIDDEN_LIMITED_LIST is an array
+//   const existingList = JSON.parse(existingData);
+//   // Append existing data to FORBIDDEN_LIMITED_LIST
+//   FORBIDDEN_LIMITED_LIST.push(...existingList);
+// }
+
+// Function to append data to the JSON file
+function appendToJsonFile(data) {
+    let existingData = [];
+
+    if (fs.existsSync(outputFilePath)) {
+        const fileContent = fs.readFileSync(outputFilePath, 'utf8');
+        if (fileContent.trim() !== '') {
+            existingData = JSON.parse(fileContent);
+        }
+    }
+
+    existingData.push(data);
+
+    fs.writeFileSync(outputFilePath, JSON.stringify(existingData, null, 2), 'utf8');
 }
+
 
 async function loadHtml(url, retries) {
     try {
@@ -69,14 +86,26 @@ async function processFLData() {
                 .map((_, el) => $(el).text().replace(/\s+/g, ' ').trim())
                 .get();
 
-            console.log('Forbidden List:');
-            console.log(forbiddenList);
+            // console.log('Forbidden List:');
+            // console.log(forbiddenList);
 
-            console.log('Limited List:');
-            console.log(limitedList);
+            // console.log('Limited List:');
+            // console.log(limitedList);
 
-            console.log('Semi-Limited List:');
-            console.log(semiLimitedList);
+            // console.log('Semi-Limited List:');
+            // console.log(semiLimitedList);
+            const data = {
+                [forbiddenLimitedDate]: {
+                    forbiddenList,
+                    limitedList,
+                    semiLimitedList,
+                },
+            };
+    
+            console.log('Data to be appended:');
+            console.log(data);
+    
+            appendToJsonFile(data);
         }
     } catch (error) {
         console.error('Error processing data:', error);
