@@ -10,7 +10,7 @@ import cheerio from 'cheerio';
 const __dirname = path.resolve(path.dirname(''));
 
 const baseUrl = 'https://www.db.yugioh-card.com/yugiohdb/forbidden_limited.action?forbiddenLimitedDate=';
-const forbiddenLimitedDate = '2012-09-01' //'2012-03-01';
+const forbiddenLimitedDate = '2023-09-25' //try to find banlist before 2012 year
 let fileUrls = [];
 
 const outputFilePath = path.join(__dirname, 'data', 'forbidden_limited_list.json');
