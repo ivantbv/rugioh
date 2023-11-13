@@ -9,8 +9,9 @@ import cheerio from 'cheerio';
 
 const __dirname = path.resolve(path.dirname(''));
 
-const baseUrl = 'https://www.db.yugioh-card.com/yugiohdb/forbidden_limited.action?forbiddenLimitedDate=';
-const forbiddenLimitedDate = '2023-09-25' //try to find banlist before 2012 year
+//const baseUrl = 'https://www.db.yugioh-card.com/yugiohdb/forbidden_limited.action?forbiddenLimitedDate=';
+const baseUrl = 'https://www.yugioh-card.com/eu/play/forbidden-and-limited-list/?listid=22' //'2011-09-01'
+const forbiddenLimitedDate = '2011-03-01' //try to find banlist before 2012 year
 let fileUrls = [];
 
 const outputFilePath = path.join(__dirname, 'data', 'forbidden_limited_list.json');
@@ -67,34 +68,50 @@ async function loadHtml(url, retries) {
     }
 }
 
-async function processFLData() {
+async function processForbiddenList(){
     try {
-        const html = await loadHtml(baseUrl + forbiddenLimitedDate, maxRetries);
 
-        if (html) {
-            const $ = cheerio.load(html);
+ 
+        const fetchForbiddenList = await fetch(`https://ygoprodeck.com/api/banlist/getBanList.php?list=TCG&date=${forbiddenLimitedDate}`, {
+    "headers": {
+        "accept": "application/json, text/javascript, */*; q=0.01",
+        "accept-language": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7,bg;q=0.6",
+        "sec-ch-ua": "\"Google Chrome\";v=\"119\", \"Chromium\";v=\"119\", \"Not?A_Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-origin",
+        "x-requested-with": "XMLHttpRequest"
+    },
+    "referrer": "https://ygoprodeck.com/banlist/",
+    "referrerPolicy": "strict-origin-when-cross-origin",
+    "body": null,
+    "method": "GET",
+    "mode": "cors",
+    "credentials": "include"
+    });
 
-            const forbiddenList = $('#list_forbidden .card_name')
-                .map((_, el) => $(el).text().replace(/\s+/g, ' ').trim())
-                .get();
+    const responseForbiddenList = await fetchForbiddenList.json();
 
-            const limitedList = $('#list_limited .card_name')
-                .map((_, el) => $(el).text().replace(/\s+/g, ' ').trim())
-                .get();
+    // console.log(responseForbiddenList, 'list forb')
 
-            const semiLimitedList = $('#list_semi_limited .card_name')
-                .map((_, el) => $(el).text().replace(/\s+/g, ' ').trim())
-                .get();
-
-            // console.log('Forbidden List:');
-            // console.log(forbiddenList);
-
-            // console.log('Limited List:');
-            // console.log(limitedList);
-
-            // console.log('Semi-Limited List:');
-            // console.log(semiLimitedList);
-            const data = {
+    let forbiddenList = [];
+    let limitedList = [];
+    let semiLimitedList = [];
+    
+    responseForbiddenList.forEach(card => {
+        if (card.status_text === 'Banned') {
+            forbiddenList.push(card.name)
+        } 
+        if (card.status_text === 'Limited') {
+            limitedList.push(card.name)
+        }
+        if (card.status_text === 'Semi-Limited') {
+            semiLimitedList.push(card.name)
+        }
+    })
+     const data = {
                 [forbiddenLimitedDate]: {
                     forbiddenList,
                     limitedList,
@@ -105,7 +122,65 @@ async function processFLData() {
             console.log('Data to be appended:');
             console.log(data);
     
-            appendToJsonFile(data);
+           appendToJsonFile(data);
+        } catch(error) {
+            console.error('Error processing data:', error);
+        }
+
+}
+processForbiddenList();
+
+
+async function processFLData() {
+    try {
+        const html = await loadHtml(baseUrl, maxRetries);
+
+        if (html) {
+            const $ = cheerio.load(html);
+
+            // const forbiddenList = $('#list_forbidden .card_name')
+            //     .map((_, el) => $(el).text().replace(/\s+/g, ' ').trim())
+            //     .get();
+
+            // const limitedList = $('#list_limited .card_name')
+            //     .map((_, el) => $(el).text().replace(/\s+/g, ' ').trim())
+            //     .get();
+
+            // const semiLimitedList = $('#list_semi_limited .card_name')
+            //     .map((_, el) => $(el).text().replace(/\s+/g, ' ').trim())
+            //     .get();
+            let forbiddenList = [];
+            const forbidden = $('#forbidden')
+            forbidden.find('tbody tr').each((index, row) => {
+                const secondTd = $(row).find('td:eq(1)'); // This selects the second <td> element in each row
+                // Extract text content from the text node
+                const textContent = secondTd.contents().first().text();
+                
+                forbiddenList.push(textContent);
+            });
+            console.log(forbiddenList, 'forbiddenList');
+
+            // console.log('Forbidden List:');
+            // console.log(forbiddenList);
+
+            // console.log('Limited List:');
+            // console.log(limitedList);
+
+            // console.log('Semi-Limited List:');
+            // console.log(semiLimitedList);
+
+            // const data = {
+            //     [forbiddenLimitedDate]: {
+            //         forbiddenList,
+            //         limitedList,
+            //         semiLimitedList,
+            //     },
+            // };
+    
+            // console.log('Data to be appended:');
+            // console.log(data);
+    
+            // appendToJsonFile(data);
         }
     } catch (error) {
         console.error('Error processing data:', error);
@@ -114,4 +189,4 @@ async function processFLData() {
 
 
 
-processFLData();
+// processFLData();
