@@ -6,6 +6,10 @@
 //^ to Fetch the forbidden/limited list - it is sorted from 2012 until present
 //Add in my card objects for the cards.name if it matches with the one of the forbidden/limited list
 //a new key:value pair that will list whether a card is limited/semi limited/forbidden for that period
+
+//https://db.ygoprodeck.com/api/v7/cardinfo.php?misc=yes - fetch this api and map the konami_id
+//to my card's id. Then if the id's are the same add the card's archetype (if its available),
+//and the frameType
 import fs from 'fs';
 import fetch from 'node-fetch';
 import path from 'path';

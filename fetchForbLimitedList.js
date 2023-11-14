@@ -11,7 +11,7 @@ const __dirname = path.resolve(path.dirname(''));
 
 //const baseUrl = 'https://www.db.yugioh-card.com/yugiohdb/forbidden_limited.action?forbiddenLimitedDate=';
 const baseUrl = 'https://www.yugioh-card.com/eu/play/forbidden-and-limited-list/?listid=22' //'2011-09-01'
-const forbiddenLimitedDate = '2011-03-01' //try to find banlist before 2012 year
+const forbiddenLimitedDate = '1999-08-01' //try to find banlist before 2012 year year-month-day
 let fileUrls = [];
 
 const outputFilePath = path.join(__dirname, 'data', 'forbidden_limited_list.json');
