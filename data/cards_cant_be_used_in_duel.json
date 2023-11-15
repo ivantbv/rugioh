@@ -1,0 +1,444 @@
+[
+  {
+    "id": 5297,
+    "type": "trap",
+    "name": "Card of Last Will",
+    "englishAttribute": "trap",
+    "localizedAttribute": "TRAP",
+    "effectText": "If the ATK of a monster(s) you control becomes 0 by a card effect: Draw until you have 5 cards in your hand.\nThis card cannot be used in a Duel.",
+    "releaseDate": "2013/10/11",
+    "cardImage": "https://raw.githubusercontent.com/yugioh-artworks/artworks-en-n.ygorganization.com/main/0/52/97_1.png"
+  },
+  {
+    "id": 6959,
+    "type": "monster",
+    "name": "Armament of the Lethal Lords",
+    "englishAttribute": "dark",
+    "localizedAttribute": "DARK",
+    "effectText": "This card cannot be Special Summoned. This card must be Tribute Summoned by Tributing 3 Warrior-Type monsters on your side of the field. If this card attacks your opponent's Life Points directly and makes them 0, the controller of this card wins the Match.\nThis card cannot be used in a Duel.",
+    "level": 8,
+    "atk": 2500,
+    "def": 2500,
+    "properties": [
+      "Warrior",
+      "Effect"
+    ],
+    "releaseDate": "2006/07/02",
+    "cardImage": "https://raw.githubusercontent.com/yugioh-artworks/artworks-en-n.ygorganization.com/main/0/69/59_1.png"
+  },
+  {
+    "id": 7992,
+    "type": "monster",
+    "name": "Tyr, the Vanquishing Warlord",
+    "englishAttribute": "light",
+    "localizedAttribute": "LIGHT",
+    "effectText": "This card cannot be Special Summoned. To Tribute Summon this card, you must Tribute 3 Fairy-Type monsters. If this card attacks your opponent directly and reduces their Life Points to 0, you win the Match.\nThis card cannot be used in a Duel.",
+    "level": 10,
+    "atk": 3000,
+    "def": 3000,
+    "properties": [
+      "Fairy",
+      "Effect"
+    ],
+    "releaseDate": "2008/08/10",
+    "cardImage": "https://raw.githubusercontent.com/yugioh-artworks/artworks-en-n.ygorganization.com/main/0/79/92_1.png"
+  },
+  {
+    "id": 7993,
+    "type": "monster",
+    "name": "Lorelei, the Symphonic Arsenal",
+    "englishAttribute": "light",
+    "localizedAttribute": "LIGHT",
+    "effectText": "This card cannot be Special Summoned. To Tribute Summon this card, you must Tribute 3 Machine-Type monsters. If this card attacks your opponent directly and reduces their Life Points to 0, you win the Match.\nThis card cannot be used in a Duel.",
+    "level": 8,
+    "atk": 2400,
+    "def": 2000,
+    "properties": [
+      "Machine",
+      "Effect"
+    ],
+    "releaseDate": "2008/08/10",
+    "cardImage": "https://raw.githubusercontent.com/yugioh-artworks/artworks-en-n.ygorganization.com/main/0/79/93_1.png"
+  },
+  {
+    "id": 8610,
+    "type": "monster",
+    "name": "Aggiba, the Malevolent Sh'nn S'yo",
+    "englishAttribute": "light",
+    "localizedAttribute": "LIGHT",
+    "effectText": "This card cannot be Special Summoned. To Tribute Summon this card, you must Tribute 3 Fiend-Type monsters. If this card attacks your opponent directly and reduces their Life Points to 0, you win the Match.\nThis card cannot be used in a Duel.",
+    "level": 10,
+    "atk": 3000,
+    "def": 3000,
+    "properties": [
+      "Fiend",
+      "Effect"
+    ],
+    "releaseDate": "2009/08/09",
+    "cardImage": "https://raw.githubusercontent.com/yugioh-artworks/artworks-en-n.ygorganization.com/main/0/86/10_1.png"
+  },
+  {
+    "id": 8611,
+    "type": "monster",
+    "name": "Skuna, the Leonine Rakan",
+    "englishAttribute": "dark",
+    "localizedAttribute": "DARK",
+    "effectText": "This card cannot be Special Summoned. To Tribute Summon this card, you must Tribute 3 Beast-Warrior-Type monsters. If this card attacks your opponent directly and reduces their Life Points to 0, you win the Match.\nThis card cannot be used in a Duel.",
+    "level": 8,
+    "atk": 2600,
+    "def": 2000,
+    "properties": [
+      "Beast-Warrior",
+      "Effect"
+    ],
+    "releaseDate": "2009/08/09",
+    "cardImage": "https://raw.githubusercontent.com/yugioh-artworks/artworks-en-n.ygorganization.com/main/0/86/11_1.png"
+  },
+  {
+    "id": 9247,
+    "type": "monster",
+    "name": "Stardust Divinity",
+    "englishAttribute": "light",
+    "localizedAttribute": "LIGHT",
+    "effectText": "1 LIGHT Tuner + 2 or more non-Tuner Fairy-Type monsters\nThis card cannot be Special Summoned except by Synchro Summon. If this card attacks your opponent directly and reduces their Life Points to 0, you win the Match.\nThis card cannot be used in a Duel.",
+    "level": 10,
+    "atk": 3000,
+    "def": 3000,
+    "properties": [
+      "Fairy",
+      "Synchro",
+      "Effect"
+    ],
+    "releaseDate": "2010/08/15",
+    "cardImage": "https://raw.githubusercontent.com/yugioh-artworks/artworks-en-n.ygorganization.com/main/0/92/47_1.png"
+  },
+  {
+    "id": 9248,
+    "type": "monster",
+    "name": "Grizzly, the Red Star Beast",
+    "englishAttribute": "earth",
+    "localizedAttribute": "EARTH",
+    "effectText": "1 EARTH Tuner + 2 or more non-Tuner Beast-Type monsters\nThis card cannot be Special Summoned except by Synchro Summon. If this card attacks your opponent directly and reduces their Life Points to 0, you win the Match.\nThis card cannot be used in a Duel.",
+    "level": 8,
+    "atk": 2700,
+    "def": 2300,
+    "properties": [
+      "Beast",
+      "Synchro",
+      "Effect"
+    ],
+    "releaseDate": "2010/08/15",
+    "cardImage": "https://raw.githubusercontent.com/yugioh-artworks/artworks-en-n.ygorganization.com/main/0/92/48_1.png"
+  },
+  {
+    "id": 9850,
+    "type": "monster",
+    "name": "King Landia the Goldfang",
+    "englishAttribute": "light",
+    "localizedAttribute": "LIGHT",
+    "effectText": "3 Level 8 monsters\nMust be Xyz Summoned and cannot be Special Summoned by other ways. If this card attacks your opponent directly and reduces their Life Points to 0, while it has an Xyz Material attached that was originally Beast-Warrior-Type, you win the Match.\nThis card cannot be used in a Duel.",
+    "rank": 8,
+    "atk": 3000,
+    "def": 2500,
+    "properties": [
+      "Beast-Warrior",
+      "Xyz",
+      "Effect"
+    ],
+    "releaseDate": "2011/08/14",
+    "cardImage": "https://raw.githubusercontent.com/yugioh-artworks/artworks-en-n.ygorganization.com/main/0/98/50_1.png"
+  },
+  {
+    "id": 9851,
+    "type": "monster",
+    "name": "Queen Nereia the Silvercrown",
+    "englishAttribute": "light",
+    "localizedAttribute": "LIGHT",
+    "effectText": "3 Level 6 monsters\nMust be Xyz Summoned and cannot be Special Summoned by other ways. If this card attacks your opponent directly and reduces their Life Points to 0, while it has an Xyz Material attached that was originally Plant-Type, you win the Match.\nThis card cannot be used in a Duel.",
+    "rank": 6,
+    "atk": 2500,
+    "def": 2400,
+    "properties": [
+      "Plant",
+      "Xyz",
+      "Effect"
+    ],
+    "releaseDate": "2011/08/14",
+    "cardImage": "https://raw.githubusercontent.com/yugioh-artworks/artworks-en-n.ygorganization.com/main/0/98/51_1.png"
+  },
+  {
+    "id": 10321,
+    "type": "monster",
+    "name": "Legendary Dragon of White",
+    "englishAttribute": "light",
+    "localizedAttribute": "LIGHT",
+    "effectText": "3 Level 8 monsters\nMust be Xyz Summoned and cannot be Special Summoned by other ways. If this card attacks your opponent directly and reduces their LP to 0, while it has an Xyz Material attached that was originally Dragon-Type, you win the Match.",
+    "rank": 8,
+    "atk": 3000,
+    "def": 2500,
+    "properties": [
+      "Dragon",
+      "Xyz",
+      "Effect"
+    ],
+    "releaseDate": "2012/08/11",
+    "cardImage": "https://raw.githubusercontent.com/yugioh-artworks/artworks-en-n.ygorganization.com/main/1/3/21_1.png"
+  },
+  {
+    "id": 10322,
+    "type": "monster",
+    "name": "Legendary Magician of Dark",
+    "englishAttribute": "dark",
+    "localizedAttribute": "DARK",
+    "effectText": "3 Level 7 monsters\nMust be Xyz Summoned and cannot be Special Summoned by other ways. If this card attacks your opponent directly and reduces their LP to 0, while it has an Xyz Material attached that was originally Spellcaster-Type, you win the Match.",
+    "rank": 7,
+    "atk": 2500,
+    "def": 2100,
+    "properties": [
+      "Spellcaster",
+      "Xyz",
+      "Effect"
+    ],
+    "releaseDate": "2012/08/11",
+    "cardImage": "https://raw.githubusercontent.com/yugioh-artworks/artworks-en-n.ygorganization.com/main/1/3/22_1.png"
+  },
+  {
+    "id": 10845,
+    "type": "monster",
+    "name": "Grandopolis, The Eternal Golden City",
+    "englishAttribute": "light",
+    "localizedAttribute": "LIGHT",
+    "effectText": "3 Level 8 monsters\nMust be Xyz Summoned and cannot be Special Summoned by other ways. If this card attacks your opponent directly and reduces their Life Points to 0, while it has an Xyz Material attached that was originally Machine-Type, you win the Match.\nThis card cannot be used in a Duel.",
+    "rank": 8,
+    "atk": 2800,
+    "def": 3500,
+    "properties": [
+      "Machine",
+      "Xyz",
+      "Effect"
+    ],
+    "releaseDate": "2013/08/11",
+    "cardImage": "https://raw.githubusercontent.com/yugioh-artworks/artworks-en-n.ygorganization.com/main/1/8/45_1.png"
+  },
+  {
+    "id": 10846,
+    "type": "monster",
+    "name": "E☆HERO Pit Boss",
+    "englishAttribute": "light",
+    "localizedAttribute": "LIGHT",
+    "effectText": "3 Level 6 monsters\nMust be Xyz Summoned and cannot be Special Summoned by other ways. If this card attacks your opponent directly and reduces their Life Points to 0, while it has an Xyz Material attached that was originally Spellcaster-Type, you win the Match.\nThis card cannot be used in a Duel.",
+    "rank": 6,
+    "atk": 2600,
+    "def": 2000,
+    "properties": [
+      "Spellcaster",
+      "Xyz",
+      "Effect"
+    ],
+    "releaseDate": "2013/08/11",
+    "cardImage": "https://raw.githubusercontent.com/yugioh-artworks/artworks-en-n.ygorganization.com/main/1/8/46_1.png"
+  },
+  {
+    "id": 11455,
+    "type": "monster",
+    "name": "The Twin Kings, Founders of the Empire",
+    "englishAttribute": "light",
+    "localizedAttribute": "LIGHT",
+    "effectText": "Cannot be Special Summoned, except by Pendulum Summon. Requires 3 Beast-Type Tributes to Normal Summon (cannot be Normal Set). If this card attacks your opponent directly and reduces their LP to 0, while you control no other monsters, you win the Match.",
+    "pendEffect": "Once per turn: You can banish 3 Beast-Type Pendulum Monsters you control, then target 1 Pendulum Monster you control; if it attacks your opponent directly and reduces their LP to 0 this turn, you win the Match.",
+    "pendScale": 1,
+    "level": 8,
+    "atk": 3000,
+    "def": 2200,
+    "properties": [
+      "Beast",
+      "Pendulum",
+      "Effect"
+    ],
+    "releaseDate": "2014/08/10",
+    "cardImage": "https://raw.githubusercontent.com/yugioh-artworks/artworks-en-n.ygorganization.com/main/1/14/55_1.png"
+  },
+  {
+    "id": 11456,
+    "type": "monster",
+    "name": "Leonardo's Silver Skyship",
+    "englishAttribute": "wind",
+    "localizedAttribute": "WIND",
+    "effectText": "Her wings display her glory.\nThe proof of her glories are told in legend..\nThis card cannot be used in a Duel.",
+    "pendEffect": "Once per turn: You can banish 3 Machine-Type Pendulum Monsters you control, then target 1 Pendulum Monster you control; if it attacks your opponent directly and reduces their LP to 0 this turn, you win the Match.",
+    "pendScale": 10,
+    "level": 7,
+    "atk": 0,
+    "def": 3000,
+    "properties": [
+      "Machine",
+      "Pendulum",
+      "Normal"
+    ],
+    "releaseDate": "2014/08/10",
+    "cardImage": "https://raw.githubusercontent.com/yugioh-artworks/artworks-en-n.ygorganization.com/main/1/14/56_1.png"
+  },
+  {
+    "id": 12045,
+    "type": "monster",
+    "name": "Kuzunoha, the Onmyojin",
+    "englishAttribute": "dark",
+    "localizedAttribute": "DARK",
+    "effectText": "Cannot be Special Summoned, except by Pendulum Summon. Requires 3 Spellcaster-Type Tributes to Normal Summon (cannot be Normal Set). If this card attacks your opponent directly and reduces their LP to 0, while you control no other monsters, you win the Match.",
+    "pendEffect": "Once per turn: You can banish 3 Spellcaster-Type Pendulum Monsters you control, then target 1 Pendulum Monster you control; if it attacks your opponent directly and reduces their LP to 0 this turn, you win the Match.",
+    "pendScale": 1,
+    "level": 8,
+    "atk": 3000,
+    "def": 2300,
+    "properties": [
+      "Spellcaster",
+      "Pendulum",
+      "Effect"
+    ],
+    "releaseDate": "2015/08/16",
+    "cardImage": "https://raw.githubusercontent.com/yugioh-artworks/artworks-en-n.ygorganization.com/main/1/20/45_1.png"
+  },
+  {
+    "id": 12046,
+    "type": "monster",
+    "name": "Sakyo, Swordmaster of the Far East",
+    "englishAttribute": "light",
+    "localizedAttribute": "LIGHT",
+    "effectText": "The dust has now settled on this greatest of battles.\nHail to your victories.",
+    "pendEffect": "Once per turn: You can banish 3 Warrior-Type Pendulum Monsters you control, then target 1 Pendulum Monster you control; if it attacks your opponent directly and reduces their LP to 0 this turn, you win the Match.",
+    "pendScale": 10,
+    "level": 7,
+    "atk": 2900,
+    "def": 2600,
+    "properties": [
+      "Warrior",
+      "Pendulum",
+      "Normal"
+    ],
+    "releaseDate": "2015/08/16",
+    "cardImage": "https://raw.githubusercontent.com/yugioh-artworks/artworks-en-n.ygorganization.com/main/1/20/46_1.png"
+  },
+  {
+    "id": 12732,
+    "type": "monster",
+    "name": "Juno, the Celestial Goddess",
+    "englishAttribute": "light",
+    "localizedAttribute": "LIGHT",
+    "effectText": "Cannot be Special Summoned, except by Pendulum Summon. Requires 3 Fairy-Type Tributes to Normal Summon (cannot be Normal Set). If this card attacks your opponent directly and reduces their LP to 0, while you control no other monsters, you win the Match.",
+    "pendEffect": "Once per turn: You can banish 3 Fairy-Type Pendulum Monsters you control, then target 1 Pendulum Monster you control; if it attacks your opponent directly and reduces their LP to 0 this turn, you win the Match.",
+    "pendScale": 1,
+    "level": 8,
+    "atk": 3000,
+    "def": 3000,
+    "properties": [
+      "Fairy",
+      "Pendulum",
+      "Effect"
+    ],
+    "releaseDate": "2016/08/20",
+    "cardImage": "https://raw.githubusercontent.com/yugioh-artworks/artworks-en-n.ygorganization.com/main/1/27/32_1.png"
+  },
+  {
+    "id": 12733,
+    "type": "monster",
+    "name": "Shelga, the Tri-Warlord",
+    "englishAttribute": "water",
+    "localizedAttribute": "WATER",
+    "effectText": "The shockwaves of powerful battles have warped reality, allowing the proud valiant to emerge from the Dimensional Sea.",
+    "pendEffect": "Once per turn: You can banish 3 Psychic-Type Pendulum Monsters you control, then target 1 Pendulum Monster you control; if it attacks your opponent directly and reduces their LP to 0 this turn, you win the Match.",
+    "pendScale": 10,
+    "level": 7,
+    "atk": 2800,
+    "def": 2500,
+    "properties": [
+      "Psychic",
+      "Pendulum",
+      "Normal"
+    ],
+    "releaseDate": "2016/08/20",
+    "cardImage": "https://raw.githubusercontent.com/yugioh-artworks/artworks-en-n.ygorganization.com/main/1/27/33_1.png"
+  },
+  {
+    "id": 14796,
+    "type": "monster",
+    "name": "Kaiser Eagle, the Heavens' Mandate",
+    "englishAttribute": "light",
+    "localizedAttribute": "LIGHT",
+    "effectText": "3+ Winged Beast Effect Monsters\nMust be Link Summoned. If this Extra Linked card attacks your opponent directly and reduces their LP to 0, you win the Match.",
+    "linkRating": 5,
+    "linkArrows": [
+      "4",
+      "6",
+      "1",
+      "2",
+      "3"
+    ],
+    "atk": 3000,
+    "properties": [
+      "Winged Beast",
+      "Link",
+      "Effect"
+    ],
+    "releaseDate": "2019/08/10",
+    "cardImage": "https://raw.githubusercontent.com/yugioh-artworks/artworks-en-n.ygorganization.com/main/1/47/96_1.png"
+  },
+  {
+    "id": 14797,
+    "type": "monster",
+    "name": "Skyfaring Castle of the Black Forest",
+    "englishAttribute": "wind",
+    "localizedAttribute": "WIND",
+    "effectText": "3+ Rock Effect Monsters\nMust be Link Summoned. If this Extra Linked card attacks your opponent directly and reduces their LP to 0, you win the Match.",
+    "linkRating": 4,
+    "linkArrows": [
+      "8",
+      "4",
+      "6",
+      "2"
+    ],
+    "atk": 2400,
+    "properties": [
+      "Rock",
+      "Link",
+      "Effect"
+    ],
+    "releaseDate": "2019/08/10",
+    "cardImage": "https://raw.githubusercontent.com/yugioh-artworks/artworks-en-n.ygorganization.com/main/1/47/97_1.png"
+  },
+  {
+    "id": 19391,
+    "type": "monster",
+    "name": "Masterful Magician, Servant of the Sanctuary",
+    "englishAttribute": "dark",
+    "localizedAttribute": "DARK",
+    "notes": "*Cannot be used in official Duels.",
+    "effectText": "Cannot be Special Summoned. Requires 3 Spellcaster Tributes to Normal Summon (cannot be Normal Set). If this card attacks your opponent directly and reduces their LP to 0, you win the Match.",
+    "level": 7,
+    "atk": 2500,
+    "def": 2100,
+    "properties": [
+      "Spellcaster",
+      "Effect"
+    ],
+    "releaseDate": "2023/08/07",
+    "cardImage": "https://raw.githubusercontent.com/yugioh-artworks/artworks-en-n.ygorganization.com/main/1/93/91_1.png"
+  },
+  {
+    "id": 19392,
+    "type": "monster",
+    "name": "Gatebridgeo the Waterfront Warbeast",
+    "englishAttribute": "light",
+    "localizedAttribute": "LIGHT",
+    "notes": "*Cannot be used in official Duels.",
+    "effectText": "Cannot be Special Summoned. Requires 3 Dinosaur Tributes to Normal Summon (cannot be Normal Set). If this card attacks your opponent directly and reduces their LP to 0, you win the Match.",
+    "level": 7,
+    "atk": 2500,
+    "def": 2000,
+    "properties": [
+      "Dinosaur",
+      "Effect"
+    ],
+    "releaseDate": "2023/08/07",
+    "cardImage": "https://raw.githubusercontent.com/yugioh-artworks/artworks-en-n.ygorganization.com/main/1/93/92_1.png"
+  }
+]

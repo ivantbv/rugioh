@@ -10,6 +10,7 @@
 //https://db.ygoprodeck.com/api/v7/cardinfo.php?misc=yes - fetch this api and map the konami_id
 //to my card's id. Then if the id's are the same add the card's archetype (if its available),
 //and the frameType
+///////////////////////////////////////////////////////////////////////////////////////////////
 import fs from 'fs';
 import fetch from 'node-fetch';
 import path from 'path';
@@ -68,6 +69,67 @@ async function loadJsonFiles(fileUrls, maxRetries = 3) {
 
   return Promise.all(promises);
 }
+
+////////////////////////////////////////
+
+//const allCardsFilePath = 'path/to/all_cards_data.json';
+// Load existing cards from the file
+const existingCardsData = JSON.parse(fs.readFileSync(outputFilePath, 'utf-8'));
+//console.log(existingCardsData, 'existing cards data');
+// Sample API response
+async function fetchingCardsDB() {
+  try {
+    const fetchingCards = await fetch("https://db.ygoprodeck.com/api/v7/cardinfo.php?misc=yes", {
+      "headers": {
+        "accept": "application/json, text/javascript, */*; q=0.01",
+        "accept-language": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7,bg;q=0.6",
+        "sec-ch-ua": "\"Google Chrome\";v=\"119\", \"Chromium\";v=\"119\", \"Not?A_Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-origin",
+        "x-requested-with": "XMLHttpRequest"
+      },
+      "referrer": "https://ygoprodeck.com/card-database/?&format=goat&sort=name&num=24&offset=0",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "body": null,
+      "method": "GET",
+      "mode": "cors",
+      "credentials": "include"
+    });
+  const response = await fetchingCards.json();
+
+    // Iterate over API response data
+  response.data.forEach(apiCard => {
+    // Find corresponding card in existing data based on konami_id
+    const existingCard = existingCardsData.find(card => card.id === apiCard.misc_info[0].konami_id);
+
+    // If a match is found, add frameType property
+      if (existingCard) {
+        existingCard.frameType = apiCard.frameType;
+        if (apiCard.archetype) {
+          existingCard.archetype = apiCard.archetype;
+        }
+        if (apiCard.ocg_date) {
+          existingCard.ocg_date = apiCard.ocg_date;
+        }
+        if (apiCard.tcg_date) {
+          existingCard.tcg_date = apiCard.tcg_date;
+        }
+    
+      }
+    
+    });
+//Write the modified array back to the file
+  fs.writeFileSync(outputFilePath, JSON.stringify(existingCardsData, null, 2), 'utf-8');
+} catch(error) {
+  console.error('Error processing data:', error);
+}
+}
+//fetchingCardsDB();
+
+////////////////////////////////////////////////////////////////////////
 
 async function processData() {
   try {
@@ -183,4 +245,4 @@ function convertToSlashedNumber(normalNumber) {
   }
 }
 
-processData();
+// processData();
