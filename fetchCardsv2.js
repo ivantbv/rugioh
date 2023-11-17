@@ -104,17 +104,13 @@ async function fetchingCardsDB() {
   response.data.forEach(apiCard => {
     // Find corresponding card in existing data based on konami_id
     const existingCard = existingCardsData.find(card => card.id === apiCard.misc_info[0].konami_id);
-    console.log(apiCard, 'existing card OBJ')
+    //console.log(apiCard, 'existing card OBJ')
     // If a match is found, add frameType property
       if (existingCard) {
-        if (apiCard.misc_info[0].ocg_date) {
-          console.log(existingCard.ocg_date, 'ocg date')
-          existingCard.ocg_date = apiCard.misc_info[0].ocg_date;
+        if (apiCard.misc_info[0].formats) {
+          console.log(apiCard.misc_info[0].formats, 'ocg date')
+          existingCard.formats = apiCard.misc_info[0].formats;
         }
-        if (apiCard.misc_info[0].tcg_date) {
-          existingCard.tcg_date = apiCard.misc_info[0].tcg_date;
-        }
-    
       }
     
     });
