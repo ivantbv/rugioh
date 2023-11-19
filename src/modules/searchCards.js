@@ -132,9 +132,12 @@ class SearchCards {
             narrowSearchContainer.append(byMonsterAttrContainer);
             narrowSearchContainer.append(byMonsterTypeContainer);
             this.createNarrowSearchCheckboxes(byCardFrameContainer, "narrow-search-settings", 
-                                                                    "Normal", "Effect", "Ritual", 
-                                                                    "Pendulum", "Fusion", "Synchro", 
-                                                                    "Xyz", "Link", "Spell", "Trap");
+                                                                    "normal", "effect", "ritual",
+                                                                    "fusion", "synchro", "xyz",
+                                                                    "link", "normal pendulum", "effect pendulum",
+                                                                    "ritual pendulum", "fusion pendulum",
+                                                                    "synchro pendulum", "xyz pendulum",
+                                                                    "spell","trap");
             this.createNarrowSearchCheckboxes(byMonsterAttrContainer, "attr-search-settings", 
                                                                     "DARK", "DIVINE", "EARTH", "FIRE", 
                                                                     "LIGHT", "WATER", "WIND");
@@ -151,7 +154,7 @@ class SearchCards {
             document.body.appendChild(this.narrowSearchModal);
           }
         
-          this.performNarrowSearch('narrow-search-settings', this.narrowByCardFrame, this.cardFrameNarrowBtn);
+          this.performNarrowSearch('narrow-search-settings', this.narrowByFrameType, this.cardFrameNarrowBtn);
           this.performNarrowSearch('attr-search-settings', this.narrowByMonsterAttribute, this.monsterAttributeNarrowBtn)
           this.performNarrowSearch('type-search-settings', this.narrowByCardFrame, this.monsterTypeNarrowBtn);
 
@@ -255,6 +258,23 @@ class SearchCards {
                 }
             }
         });
+    }
+
+    narrowByFrameType(cards, searchStr) {
+        const filteredCards = cards.filter((card) => {
+            if (card.frameType) {
+                if (searchStr.includes(' ')) {
+                    if (card.frameType.replace('_', ' ') === searchStr.toLowerCase()) {
+                        return card.frameType.replace('_', ' ').includes(searchStr.toLowerCase());
+                    }
+                } else {
+                    return card.frameType.includes(searchStr.toLowerCase());
+                }   
+            }
+                return false;
+            });
+        console.log('filtered cards', filteredCards);
+        return filteredCards;
     }
     //Illusion Type is also a type (like Warrior, Beast etc)
     narrowByCardFrame(cards, searchStr) {
