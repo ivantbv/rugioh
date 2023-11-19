@@ -1,0 +1,1860 @@
+[
+  {
+    "id": 411,
+    "type": "Token",
+    "name": "Ancient Gear Token",
+    "englishAttribute": "earth",
+    "localizedAttribute": "EARTH",
+    "effectText": "This card can be used as an \"Ancient Gear Token\".\n\n\n*If used for another Token, apply that Token's Type/Attribute/Level/ATK/DEF.",
+    "level": 1,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Machine",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/44052075.jpg",
+    "frameType": "token",
+    "archetype": "Ancient Gear"
+  },
+  {
+    "id": 647,
+    "type": "Token",
+    "name": "Army Ant Token",
+    "englishAttribute": "earth",
+    "localizedAttribute": "EARTH",
+    "effectText": "Special Summoned with the effect of \"Multiplication of Ants\". This Token cannot be used as a Tribute for a Tribute Summon.",
+    "level": 4,
+    "atk": 500,
+    "def": 1200,
+    "properties": [
+      "Insect",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/22493812.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 704,
+    "type": "Token",
+    "name": "Asmo Token",
+    "englishAttribute": "dark",
+    "localizedAttribute": "DARK",
+    "effectText": "Special Summoned with the effect of \"Darklord Asmodeus\". This Token cannot be destroyed by a card effect.",
+    "level": 5,
+    "atk": 1800,
+    "def": 1300,
+    "properties": [
+      "Fairy",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/85771020.jpg",
+    "frameType": "token",
+    "archetype": "Darklord"
+  },
+  {
+    "id": 888,
+    "type": "Token",
+    "name": "Batteryman Token",
+    "englishAttribute": "light",
+    "localizedAttribute": "LIGHT",
+    "effectText": "Special Summoned with the effect of \"Batteryman Solar\".",
+    "level": 1,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Thunder",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/44586427.jpg",
+    "frameType": "token",
+    "archetype": "Batteryman"
+  },
+  {
+    "id": 890,
+    "type": "Token",
+    "name": "Battle Eagle Token",
+    "englishAttribute": "wind",
+    "localizedAttribute": "WIND",
+    "effectText": "Special Summoned with the effect of \"Number 42: Galaxy Tomahawk\". Destroy this Token during the End Phase of the turn it is Special Summoned.",
+    "level": 6,
+    "atk": 2000,
+    "def": 0,
+    "properties": [
+      "Machine",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/10389143.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 1102,
+    "type": "Token",
+    "name": "Black Sheep Token",
+    "englishAttribute": "dark",
+    "localizedAttribute": "DARK",
+    "effectText": "This card can be used as a \"Black Sheep Token\".\n\n\n*If used for another Token, apply that Token's Type/Attribute/Level/ATK/DEF.",
+    "level": 1,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Zombie",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/67284108.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 1125,
+    "type": "Token",
+    "name": "Blackwing - Black Crest Token",
+    "englishAttribute": "dark",
+    "localizedAttribute": "DARK",
+    "effectText": "Special Summoned with the effect of \"Black Wing Revenge\".",
+    "level": 2,
+    "atk": 0,
+    "def": 800,
+    "properties": [
+      "Winged Beast",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/9925983.jpg",
+    "frameType": "token",
+    "archetype": "Blackwing"
+  },
+  {
+    "id": 1224,
+    "type": "Token",
+    "name": "Block Token",
+    "englishAttribute": "earth",
+    "localizedAttribute": "EARTH",
+    "effectText": "Special Summoned with the effect of \"Blockman\". This Token cannot declare an attack.",
+    "level": 4,
+    "atk": 1000,
+    "def": 1500,
+    "properties": [
+      "Rock",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/48115278.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 1631,
+    "type": "Token",
+    "name": "Ceremonial Token",
+    "englishAttribute": "earth",
+    "localizedAttribute": "EARTH",
+    "effectText": "Special Summoned with the effect of \"Offering to the Immortals\". This Token cannot be Tributed, except for a Tribute Summon of an \"Earthbound Immortal\" monster, and cannot be used as Synchro Material monsters.",
+    "level": 1,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Rock",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/82340057.jpg",
+    "frameType": "token",
+    "archetype": "Earthbound"
+  },
+  {
+    "id": 1723,
+    "type": "Token",
+    "name": "Chewbone Jr. Token",
+    "englishAttribute": "earth",
+    "localizedAttribute": "EARTH",
+    "effectText": "Special Summoned with the effect of \"Chewbone\".",
+    "level": 1,
+    "atk": 100,
+    "def": 300,
+    "properties": [
+      "Zombie",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/7392746.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 1827,
+    "type": "Token",
+    "name": "Clone Token",
+    "englishAttribute": "dark",
+    "localizedAttribute": "DARK",
+    "effectText": "Special Summoned with the effect of \"Cloning\". If the monster is destroyed and sent to the Graveyard, destroy this Token.",
+    "level": 0,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Warrior",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/86871615.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 1845,
+    "type": "Token",
+    "name": "Cloudian Token",
+    "englishAttribute": "water",
+    "localizedAttribute": "WATER",
+    "effectText": "Special Summoned with the effect of \"Cloudian - Sheep Cloud\". This Token cannot be Tributed for a Tribute Summon, unless it is for a \"Cloudian\" monster.",
+    "level": 1,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Fairy",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/56597273.jpg",
+    "frameType": "token",
+    "archetype": "Cloudian"
+  },
+  {
+    "id": 1900,
+    "type": "Token",
+    "name": "Compass Token",
+    "englishAttribute": "earth",
+    "localizedAttribute": "EARTH",
+    "effectText": "Special Summoned with the effect of \"Cosmic Compass\".",
+    "level": 1,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Machine",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/27450401.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 2128,
+    "type": "Token",
+    "name": "Crystron Token",
+    "englishAttribute": "water",
+    "localizedAttribute": "WATER",
+    "effectText": "This card can be used as a \"Crystron Token\".\n\n\n*If used for another Token, apply that Token's Type/Attribute/Level/ATK/DEF.",
+    "level": 1,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Machine",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/55326323.jpg",
+    "frameType": "token",
+    "archetype": "Crystron"
+  },
+  {
+    "id": 2578,
+    "type": "Token",
+    "name": "Dark Soul Token",
+    "englishAttribute": "dark",
+    "localizedAttribute": "DARK",
+    "effectText": "Special Summoned with the effect of \"Dragonecro Nethersoul Dragon\".",
+    "level": 1,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Zombie",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/8198621.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 2650,
+    "type": "Token",
+    "name": "Data Acorn Token",
+    "englishAttribute": "dark",
+    "localizedAttribute": "DARK",
+    "effectText": "This card can be used as a \"Data Acorn Token\".\r\n\r\n*If used for another Token, apply that Token's Type/Attribute/Level/ATK/DEF.",
+    "level": 1,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Cyberse",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/84816245.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 2651,
+    "type": "Token",
+    "name": "Data Token",
+    "englishAttribute": "light",
+    "localizedAttribute": "LIGHT",
+    "effectText": "Summoned by the effect of \"Link Streamer\".",
+    "level": 1,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Cyberse",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/23331401.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 2820,
+    "type": "Token",
+    "name": "Deus Token",
+    "englishAttribute": "dark",
+    "localizedAttribute": "DARK",
+    "effectText": "Special Summoned with the effect of \"Darklord Asmodeus\". This Token cannot be destroyed by battle.",
+    "level": 3,
+    "atk": 1200,
+    "def": 1200,
+    "properties": [
+      "Fairy",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/85771021.jpg",
+    "frameType": "token",
+    "archetype": "Darklord"
+  },
+  {
+    "id": 2981,
+    "type": "Token",
+    "name": "Divine Dragon Token",
+    "englishAttribute": "water",
+    "localizedAttribute": "WATER",
+    "effectText": "This card can be used as a \"Divine Dragon Token\".\r\n\r\n*If used for another Token, apply that Token's Type/Attribute/Level/ATK/DEF.",
+    "level": 10,
+    "atk": 3300,
+    "def": 3000,
+    "properties": [
+      "Fish",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/89907228.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 3018,
+    "type": "Token",
+    "name": "DOG Fighter Token",
+    "englishAttribute": "dark",
+    "localizedAttribute": "DARK",
+    "effectText": "Summoned by the effect of \"Kozmo DOG Fighter\".",
+    "level": 6,
+    "atk": 2000,
+    "def": 2400,
+    "properties": [
+      "Machine",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/29491335.jpg",
+    "frameType": "token",
+    "archetype": "Kozmo"
+  },
+  {
+    "id": 3073,
+    "type": "Token",
+    "name": "Doomsday Token",
+    "englishAttribute": "dark",
+    "localizedAttribute": "DARK",
+    "effectText": "Special Summoned with the effect of \"Fires of Doomsday\". This Token cannot be used as a Tribute for a Tribute Summon, unless it is for a DARK monster.",
+    "level": 1,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Fiend",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/46173680.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 3076,
+    "type": "Token",
+    "name": "Doppel Token",
+    "englishAttribute": "dark",
+    "localizedAttribute": "DARK",
+    "effectText": "This card can be used as a \"Doppel Token\".\n\n\n*If used for another Token, apply that Token's Type/Attribute/Level/ATK/DEF.",
+    "level": 1,
+    "atk": 400,
+    "def": 400,
+    "properties": [
+      "Warrior",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/53855410.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 3097,
+    "type": "Token",
+    "name": "Double Dude Token",
+    "englishAttribute": "dark",
+    "localizedAttribute": "DARK",
+    "effectText": "Special Summoned with the effect of \"Destiny HERO - Double Dude\".",
+    "level": 4,
+    "atk": 1000,
+    "def": 1000,
+    "properties": [
+      "Warrior",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/28355719.jpg",
+    "frameType": "token",
+    "archetype": "Destiny HERO"
+  },
+  {
+    "id": 3200,
+    "type": "Token",
+    "name": "Dragonoid Token",
+    "englishAttribute": "earth",
+    "localizedAttribute": "EARTH",
+    "effectText": "This card can be used as a \"Dragonoid Token\".\n\n\n*If used for another Token, apply that Token's Type/Attribute/Level/ATK/DEF.",
+    "level": 1,
+    "atk": 300,
+    "def": 300,
+    "properties": [
+      "Machine",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/28053764.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 3421,
+    "type": "Token",
+    "name": "Einherjar Token",
+    "englishAttribute": "earth",
+    "localizedAttribute": "EARTH",
+    "effectText": "Special Summoned with the effect of \"Valkyrie of the Nordic Ascendant\".",
+    "level": 4,
+    "atk": 1000,
+    "def": 1000,
+    "properties": [
+      "Warrior",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/40844553.jpg",
+    "frameType": "token",
+    "archetype": "Nordic"
+  },
+  {
+    "id": 3570,
+    "type": "Token",
+    "name": "Emissary of Darkness Token",
+    "englishAttribute": "light",
+    "localizedAttribute": "LIGHT",
+    "effectText": "This card can be used as an \"Emissary of Darkness Token\".\n\n\n*If used for another Token, apply that Token's Type/Attribute/Level/ATK/DEF.",
+    "level": 7,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Fairy",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/44330099.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 3607,
+    "type": "Token",
+    "name": "Engine Token",
+    "englishAttribute": "earth",
+    "localizedAttribute": "EARTH",
+    "effectText": "Special Summoned with the effect of \"Fiendish Engine Ω\".",
+    "level": 1,
+    "atk": 200,
+    "def": 200,
+    "properties": [
+      "Machine",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/82556059.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 3638,
+    "type": "Token",
+    "name": "Esprit Bird Token",
+    "englishAttribute": "wind",
+    "localizedAttribute": "WIND",
+    "effectText": "This card can be used as a \"Shinobird Token\".\r\n\r\n*If used for another Token, apply that Token's Type/Attribute/Level/ATK/DEF.",
+    "level": 4,
+    "atk": 1500,
+    "def": 1500,
+    "properties": [
+      "Winged Beast",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/52900001.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 3653,
+    "type": "Token",
+    "name": "Eva Token",
+    "englishAttribute": "dark",
+    "localizedAttribute": "DARK",
+    "effectText": "Special Summoned with the effect of \"Zeta Reticulant\".",
+    "level": 2,
+    "atk": 500,
+    "def": 500,
+    "properties": [
+      "Fiend",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/64382840.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 3692,
+    "type": "Token",
+    "name": "Evil Token",
+    "englishAttribute": "dark",
+    "localizedAttribute": "DARK",
+    "effectText": "Special Summoned with the effect of \"Vicious Claw\".",
+    "level": 7,
+    "atk": 2500,
+    "def": 2500,
+    "properties": [
+      "Fiend",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/75524093.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 4012,
+    "type": "Token",
+    "name": "Fireball Token",
+    "englishAttribute": "fire",
+    "localizedAttribute": "FIRE",
+    "effectText": "Special Summoned with the effect of \"Goka, the Pyre of Malice\".",
+    "level": 1,
+    "atk": 100,
+    "def": 100,
+    "properties": [
+      "Pyro",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/98596597.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 4132,
+    "type": "Token",
+    "name": "Fluff Token",
+    "englishAttribute": "wind",
+    "localizedAttribute": "WIND",
+    "effectText": "This card can be used as a \"Fluff Token\".\n\n*If used for another Token, apply that Token's Type/Attribute/Level/ATK/DEF.",
+    "level": 1,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Plant",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/15341822.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 4235,
+    "type": "Token",
+    "name": "Fox Token",
+    "englishAttribute": "fire",
+    "localizedAttribute": "FIRE",
+    "effectText": "This card can be used as a \"Fox Token\".\n\n\n*If used for another Token, apply that Token's Type/Attribute/Level/ATK/DEF.\n}}",
+    "level": 2,
+    "atk": 500,
+    "def": 500,
+    "properties": [
+      "Zombie",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/27198002.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 4632,
+    "type": "Token",
+    "name": "Ghost Token",
+    "englishAttribute": "dark",
+    "localizedAttribute": "DARK",
+    "effectText": "Special Summoned with the effect of \"Damage Translation\".",
+    "level": 1,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Fiend",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/35268888.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 4695,
+    "type": "Token",
+    "name": "Gift Fiend Token",
+    "englishAttribute": "dark",
+    "localizedAttribute": "DARK",
+    "effectText": "Special Summoned with the effect of \"Revival Gift\".",
+    "level": 3,
+    "atk": 1500,
+    "def": 1500,
+    "properties": [
+      "Fiend",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/93912846.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 5059,
+    "type": "Token",
+    "name": "Great Dragon Token",
+    "englishAttribute": "light",
+    "localizedAttribute": "LIGHT",
+    "effectText": "This card can be used as a \"Dragon Lord Token\".\r\n\r\n*If used for another Token, apply that Token's Type/Attribute/Level/ATK/DEF.",
+    "level": 1,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Dragon",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/69868556.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 5094,
+    "type": "Token",
+    "name": "Grinder Token",
+    "englishAttribute": "dark",
+    "localizedAttribute": "DARK",
+    "effectText": "This card can be used as a \"Grinder Token\".\n\n\n*If used for another Token, apply that Token's Type/Attribute/Level/ATK/DEF.",
+    "level": 1,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Fiend",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/75732623.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 5429,
+    "type": "Token",
+    "name": "Hippo Token",
+    "englishAttribute": "earth",
+    "localizedAttribute": "EARTH",
+    "effectText": "This card can be used as a \"Hippo Token\".\n\n*If used for another Token, apply that Token's Type/Attribute/Level/ATK/DEF.",
+    "level": 1,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Beast",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/11050416.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 5454,
+    "type": "Token",
+    "name": "Horseytail Token",
+    "englishAttribute": "wind",
+    "localizedAttribute": "WIND",
+    "effectText": "Special Summoned with the effect of \"Horseytail\". When this Token is destroyed by battle with a Plant-Type monster, its controller sends 1 card from their hand to the Graveyard.",
+    "level": 1,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Plant",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/82994510.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 5535,
+    "type": "Token",
+    "name": "Ice Coffin Token",
+    "englishAttribute": "water",
+    "localizedAttribute": "WATER",
+    "effectText": "Special Summoned with the effect of \"Royal Knight of the Ice Barrier\". This Token cannot be used as a Tribute for a Tribute Summon.",
+    "level": 1,
+    "atk": 1000,
+    "def": 0,
+    "properties": [
+      "Aqua",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/66661679.jpg",
+    "frameType": "token",
+    "archetype": "Ice Barrier"
+  },
+  {
+    "id": 5694,
+    "type": "Token",
+    "name": "Infernoid Token",
+    "englishAttribute": "fire",
+    "localizedAttribute": "FIRE",
+    "effectText": "This card can be used as an \"Infernoid Token\".\n\n*If used for another Token, apply that Token's Type/Attribute/Level/ATK/DEF.",
+    "level": 1,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Fiend",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/34822851.jpg",
+    "frameType": "token",
+    "archetype": "Infernoid"
+  },
+  {
+    "id": 5732,
+    "type": "Token",
+    "name": "Insect Monster Token",
+    "englishAttribute": "earth",
+    "localizedAttribute": "EARTH",
+    "effectText": "Special Summoned with the effect of \"Insect Queen\".",
+    "level": 1,
+    "atk": 100,
+    "def": 100,
+    "properties": [
+      "Insect",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/91512836.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 5825,
+    "type": "Token",
+    "name": "Ivy Token",
+    "englishAttribute": "earth",
+    "localizedAttribute": "EARTH",
+    "effectText": "Special Summoned with the effect of \"Wall of Ivy\". When it is destroyed, the controller takes 300 damage.",
+    "level": 1,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Plant",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/30069399.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 5940,
+    "type": "Token",
+    "name": "Jurrac Token",
+    "englishAttribute": "fire",
+    "localizedAttribute": "FIRE",
+    "effectText": "Special Summoned with the effect of \"Jurrac Stauriko\". This Token cannot be Tributed for a Tribute Summon, unless it is for a \"Jurrac\" monster.",
+    "level": 1,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Dinosaur",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/48411997.jpg",
+    "frameType": "token",
+    "archetype": "Jurrac"
+  },
+  {
+    "id": 5956,
+    "type": "Token",
+    "name": "Kagemusha Raccoon Token",
+    "englishAttribute": "earth",
+    "localizedAttribute": "EARTH",
+    "effectText": "Special Summoned with the effect of \"Number 64: Ronin Raccoon Sandayu\". When Summoned, this Token's ATK becomes equal to the current ATK of the monster on the field that has the highest ATK (your choice, if tied).",
+    "level": 1,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Beast",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/39972130.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 6113,
+    "type": "Token",
+    "name": "Koa'ki Meiru Token",
+    "englishAttribute": "earth",
+    "localizedAttribute": "EARTH",
+    "effectText": "Special Summoned with the effect of \"Koa'ki Meiru Prototype\".",
+    "level": 4,
+    "atk": 1800,
+    "def": 1800,
+    "properties": [
+      "Rock",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/176393.jpg",
+    "frameType": "token",
+    "archetype": "Koa'ki Meiru"
+  },
+  {
+    "id": 6176,
+    "type": "Token",
+    "name": "Kuriboh Token",
+    "englishAttribute": "dark",
+    "localizedAttribute": "DARK",
+    "effectText": "This card can be used as a \"Kuriboh Token\".\n\n*If used for another Token, apply that Token's Type/Attribute/Level/ATK/DEF.",
+    "level": 1,
+    "atk": 300,
+    "def": 200,
+    "properties": [
+      "Fiend",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/40703223.jpg",
+    "frameType": "token",
+    "archetype": "Kuriboh"
+  },
+  {
+    "id": 6214,
+    "type": "Token",
+    "name": "Lamb Token",
+    "englishAttribute": "earth",
+    "localizedAttribute": "EARTH",
+    "effectText": "This card can be used as a \"Lamb Token\".\n\n\n*If used for another Token, apply that Token's Type/Attribute/Level/ATK/DEF.",
+    "level": 1,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Beast",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/60764582.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 6268,
+    "type": "Token",
+    "name": "Laval Token",
+    "englishAttribute": "fire",
+    "localizedAttribute": "FIRE",
+    "effectText": "This card can be used as any Token.",
+    "level": 1,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Pyro",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/47658965.jpg",
+    "frameType": "token",
+    "archetype": "Laval"
+  },
+  {
+    "id": 6318,
+    "type": "Token",
+    "name": "Lekunga Token",
+    "englishAttribute": "water",
+    "localizedAttribute": "WATER",
+    "effectText": "Special Summoned with the effect of \"Lekunga\".",
+    "level": 2,
+    "atk": 700,
+    "def": 700,
+    "properties": [
+      "Plant",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/62543394.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 6769,
+    "type": "Token",
+    "name": "Maize Token",
+    "englishAttribute": "earth",
+    "localizedAttribute": "EARTH",
+    "effectText": "Special Summoned with the effect of \"Sweet Corn\".",
+    "level": 1,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Plant",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/74983882.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 6837,
+    "type": "Token",
+    "name": "Malus Token",
+    "englishAttribute": "dark",
+    "localizedAttribute": "DARK",
+    "effectText": "Special Summoned with the effect of \"The Golden Apples\". The ATK and DEF of this Token are each equal to the amount of Life Points gained by the effect of \"The Golden Apples\".",
+    "level": 1,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Fiend",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/42671152.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 7014,
+    "type": "Token",
+    "name": "Mecha Phantom Beast Token",
+    "englishAttribute": "wind",
+    "localizedAttribute": "WIND",
+    "effectText": "This card can be used as a \"Mecha Phantom Beast Token\".\n\n*If used for another Token, apply that Token's Type/Attribute/Level/ATK/DEF.",
+    "level": 3,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Machine",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/904186.jpg",
+    "frameType": "token",
+    "archetype": "Mecha Phantom Beast"
+  },
+  {
+    "id": 7153,
+    "type": "Token",
+    "name": "Metabo Token",
+    "englishAttribute": "dark",
+    "localizedAttribute": "DARK",
+    "effectText": "Special Summoned with the effect of \"Metabo Globster\". This Token cannot be used as a Tribute for a Tribute Summon.",
+    "level": 1,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Fiend",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/49808197.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 7159,
+    "type": "Token",
+    "name": "Metal Fiend Token",
+    "englishAttribute": "dark",
+    "localizedAttribute": "DARK",
+    "effectText": "Special Summoned with the effect of \"Fiend's Sanctuary\". This Token cannot attack. Your opponent takes any battle damage you would have taken from battles involving this Token. During each of your Standby Phases, pay 1000 Life Points or destroy this Token.",
+    "level": 1,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Fiend",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/24874631.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 7274,
+    "type": "Token",
+    "name": "Mini Mare Mare Token",
+    "englishAttribute": "water",
+    "localizedAttribute": "WATER",
+    "effectText": "}}",
+    "level": 1,
+    "atk": 300,
+    "def": 200,
+    "properties": [
+      "Wyrm",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/54537490.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 7301,
+    "type": "Token",
+    "name": "Mirage Token",
+    "englishAttribute": "light",
+    "localizedAttribute": "LIGHT",
+    "effectText": "Special Summoned with the effect of \"Physical Double\". Destroy this Token at the end of the turn.",
+    "level": 0,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Warrior",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/63442605.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 7390,
+    "type": "Token",
+    "name": "Moon Token",
+    "englishAttribute": "light",
+    "localizedAttribute": "LIGHT",
+    "effectText": "Special Summoned with the effect of \"Arcana Force XVIII - The Moon\".",
+    "level": 1,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Fairy",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/97452818.jpg",
+    "frameType": "token",
+    "archetype": "Arcana Force"
+  },
+  {
+    "id": 7465,
+    "type": "Token",
+    "name": "Multi Token",
+    "englishAttribute": "light",
+    "localizedAttribute": "LIGHT",
+    "effectText": "Special Summoned with the effect of \"Lord British Space Fighter\".",
+    "level": 4,
+    "atk": 1200,
+    "def": 1200,
+    "properties": [
+      "Machine",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/35514097.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 7629,
+    "type": "Token",
+    "name": "Needle Token",
+    "englishAttribute": "earth",
+    "localizedAttribute": "EARTH",
+    "effectText": "Special Summoned with the effect of \"Cactus Fighter\".",
+    "level": 1,
+    "atk": 500,
+    "def": 500,
+    "properties": [
+      "Plant",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/74440056.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 7726,
+    "type": "Token",
+    "name": "Nightmare Archfiend Token",
+    "englishAttribute": "dark",
+    "localizedAttribute": "DARK",
+    "effectText": "Special Summoned with the effect of \"Nightmare Archfiends\". When it is destroyed, the controller will take 800 damage.",
+    "level": 6,
+    "atk": 2000,
+    "def": 2000,
+    "properties": [
+      "Fiend",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/42956964.jpg",
+    "frameType": "token",
+    "archetype": "Archfiend"
+  },
+  {
+    "id": 7813,
+    "type": "Token",
+    "name": "Nordic Beast Token",
+    "englishAttribute": "earth",
+    "localizedAttribute": "EARTH",
+    "effectText": "Special Summoned with the effect of \"Tanngrisnir of the Nordic Beasts\".",
+    "level": 3,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Beast",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/15394084.jpg",
+    "frameType": "token",
+    "archetype": "Nordic"
+  },
+  {
+    "id": 8075,
+    "type": "Token",
+    "name": "Ojama Token",
+    "englishAttribute": "light",
+    "localizedAttribute": "LIGHT",
+    "effectText": "This card can be used as an \"Ojama Token\".\r\n\r\n*If used for another Token, apply that Token's Type/Attribute/Level/ATK/DEF.",
+    "level": 2,
+    "atk": 0,
+    "def": 1000,
+    "properties": [
+      "Beast",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/14470846.jpg",
+    "frameType": "token",
+    "archetype": "Ojama"
+  },
+  {
+    "id": 8123,
+    "type": "Token",
+    "name": "Option Token",
+    "englishAttribute": "light",
+    "localizedAttribute": "LIGHT",
+    "effectText": "This card can be used as an \"Option Token\".\n\n\n*If used for another Token, apply that Token's Type/Attribute/Level/ATK/DEF.",
+    "level": 4,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Machine",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/93130022.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 8199,
+    "type": "Token",
+    "name": "Oyster Token",
+    "englishAttribute": "water",
+    "localizedAttribute": "WATER",
+    "effectText": "Special Summoned with the effect of \"Oyster Meister\".",
+    "level": 1,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Fish",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/83239740.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 8454,
+    "type": "Token",
+    "name": "Phantasm Spiral Token",
+    "englishAttribute": "water",
+    "localizedAttribute": "WATER",
+    "effectText": "Summoned by the effect of \"Pacifis, the Phantasm City\".",
+    "level": 8,
+    "atk": 2000,
+    "def": 2000,
+    "properties": [
+      "Wyrm",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/2819436.jpg",
+    "frameType": "token",
+    "archetype": "Phantasm Spiral"
+  },
+  {
+    "id": 8456,
+    "type": "Token",
+    "name": "Phantasm Token",
+    "englishAttribute": "dark",
+    "localizedAttribute": "DARK",
+    "effectText": "This card can be used as a \"Phantasm Token\".\n\n\n*If used for another Token, apply that Token's Type/Attribute/Level/ATK/DEF.",
+    "level": 1,
+    "atk": 1000,
+    "def": 1000,
+    "properties": [
+      "Fiend",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/69890968.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 8458,
+    "type": "Token",
+    "name": "Phantasmal Martyr Token",
+    "englishAttribute": "dark",
+    "localizedAttribute": "DARK",
+    "effectText": "This card can be used as a \"Phantasmal Martyr Token\".\n\n\n*If used for another Token, apply that Token's Type/Attribute/Level/ATK/DEF.",
+    "level": 1,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Fiend",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/93224849.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 8485,
+    "type": "Token",
+    "name": "Phantom Token",
+    "englishAttribute": "dark",
+    "localizedAttribute": "DARK",
+    "effectText": "Special Summoned with the effect of \"Number 48: Shadow Lich\".",
+    "level": 1,
+    "atk": 500,
+    "def": 500,
+    "properties": [
+      "Fiend",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/1426715.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 8528,
+    "type": "Token",
+    "name": "Photon Token",
+    "englishAttribute": "light",
+    "localizedAttribute": "LIGHT",
+    "effectText": "This card can be used as a \"Photon Token\".\n\n*If used for another Token, apply that Token's Type/Attribute/Level/ATK/DEF.",
+    "level": 4,
+    "atk": 2000,
+    "def": 0,
+    "properties": [
+      "Thunder",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/17418745.jpg",
+    "frameType": "token",
+    "archetype": "Photon"
+  },
+  {
+    "id": 8567,
+    "type": "Token",
+    "name": "Plant Token",
+    "englishAttribute": "earth",
+    "localizedAttribute": "EARTH",
+    "effectText": "Special Summoned with the effect of \"Bamboo Scrap\".",
+    "level": 1,
+    "atk": 800,
+    "def": 500,
+    "properties": [
+      "Plant",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/28062326.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 8586,
+    "type": "Token",
+    "name": "Poisonous Snake Token",
+    "englishAttribute": "earth",
+    "localizedAttribute": "EARTH",
+    "effectText": "Special Summoned with the effect of \"Cobra Jar\". When this Token is destroyed as a result of battle, inflict 500 points of damage to your opponent's Life Points.",
+    "level": 3,
+    "atk": 1200,
+    "def": 1200,
+    "properties": [
+      "Reptile",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/86801872.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 8920,
+    "type": "Token",
+    "name": "Radian Token",
+    "englishAttribute": "dark",
+    "localizedAttribute": "DARK",
+    "effectText": "Special Summoned by the effect of \"Radian, the Multidimensional Kaiju\". Cannot be used as a Synchro Material monster.",
+    "level": 7,
+    "atk": 2800,
+    "def": 0,
+    "properties": [
+      "Fiend",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/28674153.jpg",
+    "frameType": "token",
+    "archetype": "Kaiju"
+  },
+  {
+    "id": 9173,
+    "type": "Token",
+    "name": "Regenerating Rose Token",
+    "englishAttribute": "dark",
+    "localizedAttribute": "DARK",
+    "effectText": "Special Summoned with the effect of \"Regenerating Rose\".",
+    "level": 3,
+    "atk": 1200,
+    "def": 1200,
+    "properties": [
+      "Plant",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/31986289.jpg",
+    "frameType": "token",
+    "archetype": "Rose Dragon"
+  },
+  {
+    "id": 9225,
+    "type": "Token",
+    "name": "Reptilianne Token",
+    "englishAttribute": "earth",
+    "localizedAttribute": "EARTH",
+    "effectText": "Special Summoned with the effect of \"Reptilianne Spawn\".",
+    "level": 1,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Reptile",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/21179144.jpg",
+    "frameType": "token",
+    "archetype": "Reptilianne"
+  },
+  {
+    "id": 9399,
+    "type": "Token",
+    "name": "Rockstone Token",
+    "englishAttribute": "earth",
+    "localizedAttribute": "EARTH",
+    "effectText": "Special Summon with the effect of \"Rockstone Warrior\". This Token cannot be used as a Tribute for a Tribute Summon.",
+    "level": 1,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Rock",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/51987572.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 9432,
+    "type": "Token",
+    "name": "Rose Token",
+    "englishAttribute": "dark",
+    "localizedAttribute": "DARK",
+    "effectText": "Special Summoned with the effect of \"Black Garden\".",
+    "level": 2,
+    "atk": 800,
+    "def": 800,
+    "properties": [
+      "Plant",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/71645243.jpg",
+    "frameType": "token",
+    "archetype": "Rose Dragon"
+  },
+  {
+    "id": 9764,
+    "type": "Token",
+    "name": "Security Token",
+    "englishAttribute": "light",
+    "localizedAttribute": "LIGHT",
+    "effectText": "This card can be used as a \"Security Token\".\r\n\r\n\r\n● If used for another Token, apply that Token's Type / Attribute / Level / ATK / DEF.",
+    "level": 4,
+    "atk": 2000,
+    "def": 2000,
+    "properties": [
+      "Cyberse",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/93104633.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 9768,
+    "type": "Token",
+    "name": "Seed Token",
+    "englishAttribute": "earth",
+    "localizedAttribute": "EARTH",
+    "effectText": "Special Summoned with the effect of \"Seed of Flame\". This Token cannot be used as a Tribute for a Tribute Summon.",
+    "level": 1,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Plant",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/38041941.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 9858,
+    "type": "Token",
+    "name": "Sheep Token",
+    "englishAttribute": "earth",
+    "localizedAttribute": "EARTH",
+    "effectText": "This card can be used as any Token.",
+    "level": 1,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Beast",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/73915052.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 9906,
+    "type": "Token",
+    "name": "Shinobird Token",
+    "englishAttribute": "wind",
+    "localizedAttribute": "WIND",
+    "effectText": "This card can be used as a \"Shinobird Token\".\n\n\n*If used for another Token, apply that Token's Type/Attribute/Level/ATK/DEF.",
+    "level": 4,
+    "atk": 1500,
+    "def": 1500,
+    "properties": [
+      "Winged Beast",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/25415053.jpg",
+    "frameType": "token",
+    "archetype": "Shinobird"
+  },
+  {
+    "id": 10013,
+    "type": "Token",
+    "name": "Sinister Seed Token",
+    "englishAttribute": "dark",
+    "localizedAttribute": "DARK",
+    "effectText": "Special Summoned with the effect of \"Sinister Seeds\".",
+    "level": 1,
+    "atk": 100,
+    "def": 100,
+    "properties": [
+      "Plant",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/60406592.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 10019,
+    "type": "Token",
+    "name": "Siphon Token",
+    "englishAttribute": "dark",
+    "localizedAttribute": "DARK",
+    "effectText": "Special Summoned with the effect of \"Star Siphon\".",
+    "level": 1,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Spellcaster",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/70391589.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 10079,
+    "type": "Token",
+    "name": "Sky Striker Ace Token",
+    "englishAttribute": "dark",
+    "localizedAttribute": "DARK",
+    "effectText": "This card can be used as a \"Sky Striker Ace Token\".\n\n\n*If used for another Token, apply that Token's Type/Attribute/Level/ATK/DEF.",
+    "level": 1,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Warrior",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/52340445.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 10093,
+    "type": "Token",
+    "name": "Skyblaster Token",
+    "englishAttribute": "dark",
+    "localizedAttribute": "DARK",
+    "effectText": "This card can be used as a \"Skyblaster Token\".\n\n\n*If used for another Token, apply that Token's Type/Attribute/Level/ATK/DEF.",
+    "level": 4,
+    "atk": 500,
+    "def": 500,
+    "properties": [
+      "Fiend",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/12958920.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 10106,
+    "type": "Token",
+    "name": "Slime Token",
+    "englishAttribute": "water",
+    "localizedAttribute": "WATER",
+    "effectText": "This card can be used as a \"Slime Token\".\r\n\r\n\r\n*If used for another Token, apply that Token's Type/Attribute/Level/ATK/DEF.",
+    "level": 1,
+    "atk": 500,
+    "def": 500,
+    "properties": [
+      "Aqua",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/21770261.jpg",
+    "frameType": "token",
+    "archetype": "Slime"
+  },
+  {
+    "id": 10227,
+    "type": "Token",
+    "name": "Soul Token",
+    "englishAttribute": "dark",
+    "localizedAttribute": "DARK",
+    "effectText": "Special Summoned with the effect of \"Limit Impulse\". This Token cannot be Tributed, except for a Tribute Summon.",
+    "level": 1,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Fiend",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/82324106.jpg",
+    "frameType": "token",
+    "archetype": "Chaos"
+  },
+  {
+    "id": 10336,
+    "type": "Token",
+    "name": "Spider Token",
+    "englishAttribute": "earth",
+    "localizedAttribute": "EARTH",
+    "effectText": "Special Summoned with the effect of \"Spider Egg\".",
+    "level": 1,
+    "atk": 100,
+    "def": 100,
+    "properties": [
+      "Insect",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/56051649.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 10345,
+    "type": "Token",
+    "name": "Spinos Token",
+    "englishAttribute": "fire",
+    "localizedAttribute": "FIRE",
+    "effectText": "Special Summoned with the effect of \"Jurrac Spinos\".",
+    "level": 1,
+    "atk": 300,
+    "def": 0,
+    "properties": [
+      "Dinosaur",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/44689689.jpg",
+    "frameType": "token",
+    "archetype": "Jurrac"
+  },
+  {
+    "id": 10539,
+    "type": "Token",
+    "name": "Steam Token",
+    "englishAttribute": "wind",
+    "localizedAttribute": "WIND",
+    "effectText": "Special Summoned with the effect of \"Blackwing - Steam the Cloak\".",
+    "level": 1,
+    "atk": 100,
+    "def": 100,
+    "properties": [
+      "Aqua",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/9047461.jpg",
+    "frameType": "token",
+    "archetype": "Blackwing"
+  },
+  {
+    "id": 10937,
+    "type": "Token",
+    "name": "Synchron Token",
+    "englishAttribute": "earth",
+    "localizedAttribute": "EARTH",
+    "effectText": "This card can be used as a \"Synchron Token\".\n\n*If used for another Token, apply that Token's Type/Attribute/Level/ATK/DEF.",
+    "level": 2,
+    "atk": 1000,
+    "def": 0,
+    "properties": [
+      "Machine",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/62125439.jpg",
+    "frameType": "token",
+    "archetype": "Synchron"
+  },
+  {
+    "id": 10942,
+    "type": "Token",
+    "name": "Synthetic Seraphim Token",
+    "englishAttribute": "light",
+    "localizedAttribute": "LIGHT",
+    "effectText": "This card can be used as a \"Synthetic Seraphim Token\".\n\n\n*If used for another Token, apply that Token's Type/Attribute/Level/ATK/DEF.",
+    "level": 1,
+    "atk": 300,
+    "def": 300,
+    "properties": [
+      "Fairy",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/16946850.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 11396,
+    "type": "Token",
+    "name": "Thunder Option Token",
+    "englishAttribute": "light",
+    "localizedAttribute": "LIGHT",
+    "effectText": "Special Summoned with the effect of \"Blue Thunder T-45\". This Token cannot be used as a Tribute for a Tribute Summon.",
+    "level": 4,
+    "atk": 1500,
+    "def": 1500,
+    "properties": [
+      "Machine",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/14089429.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 11460,
+    "type": "Token",
+    "name": "Tindangle Token",
+    "englishAttribute": "dark",
+    "localizedAttribute": "DARK",
+    "effectText": "This card can be used as a \"Tindangle Token\".\r\n\r\n*If used for another Token, apply that Token's Type/Attribute/Level/ATK/DEF.",
+    "level": 1,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Fiend",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/75119041.jpg",
+    "frameType": "token",
+    "archetype": "Tindangle"
+  },
+  {
+    "id": 11521,
+    "type": "Token",
+    "name": "Torment Token",
+    "englishAttribute": "dark",
+    "localizedAttribute": "DARK",
+    "effectText": "This card can be used as a \"Torment Token\".\n\n\n*If used for another Token, apply that Token's Type/Attribute/Level/ATK/DEF.",
+    "level": 3,
+    "atk": 1000,
+    "def": 1000,
+    "properties": [
+      "Fiend",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/59160189.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 11687,
+    "type": "Token",
+    "name": "Tricky Token",
+    "englishAttribute": "wind",
+    "localizedAttribute": "WIND",
+    "effectText": "Special Summoned with the effect of \"Tricky Spell 4\". This Token cannot declare an attack.",
+    "level": 5,
+    "atk": 2000,
+    "def": 1200,
+    "properties": [
+      "Spellcaster",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/75622825.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 11861,
+    "type": "Token",
+    "name": "Umbral Horror Mirage Token",
+    "englishAttribute": "dark",
+    "localizedAttribute": "DARK",
+    "effectText": "Special Summon with the effect of \"Corrupted Keys\". When Summoned, this Token's ATK becomes equal to the current ATK of the Xyz Monster targeted by \"Corrupted Keys\". This Token cannot attack your opponent directly or be Tributed, except for a Tribute Summon. When that face-up Xyz Monster leaves the field, destroy this Token.",
+    "level": 1,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Fiend",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/67949764.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 11957,
+    "type": "Token",
+    "name": "Utchatzimime Token",
+    "englishAttribute": "dark",
+    "localizedAttribute": "DARK",
+    "effectText": "Special Summoned with the effect of \"Phantasmal Lord Ultimitl Bishbaalkin\".",
+    "level": 1,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Fiend",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/90884404.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 11964,
+    "type": "Token",
+    "name": "V-LAN Token",
+    "englishAttribute": "light",
+    "localizedAttribute": "LIGHT",
+    "effectText": "Special Summoned by the effect of \"V-LAN Hydra\".",
+    "level": 1,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Cyberse",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/13536607.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 11972,
+    "type": "Token",
+    "name": "Vague Shadow Token",
+    "englishAttribute": "dark",
+    "localizedAttribute": "DARK",
+    "effectText": "Special Summoned by the effect of \"Blackwing - Gofu the Vague Shadow\". This Token cannot be Tributed or used as as Synchro Material Monster.",
+    "level": 1,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Winged Beast",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/9929399.jpg",
+    "frameType": "token",
+    "archetype": "Blackwing"
+  },
+  {
+    "id": 12046,
+    "type": "Token",
+    "name": "Vassal Token",
+    "englishAttribute": "light",
+    "localizedAttribute": "LIGHT",
+    "effectText": "Special Summoned with the effect of \"Mithra the Thunder Vassal\".",
+    "level": 1,
+    "atk": 800,
+    "def": 1000,
+    "properties": [
+      "Thunder",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/22404676.jpg",
+    "frameType": "token",
+    "archetype": "Vassal"
+  },
+  {
+    "id": 12251,
+    "type": "Token",
+    "name": "Waltz Token",
+    "englishAttribute": "light",
+    "localizedAttribute": "LIGHT",
+    "effectText": "Special Summoned with the effect of \"Battle Waltz\". Neither player takes battle damage from battles involving this Token.",
+    "level": 0,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Warrior",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/15629802.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 12393,
+    "type": "Token",
+    "name": "Wicked Plant Token",
+    "englishAttribute": "earth",
+    "localizedAttribute": "EARTH",
+    "effectText": "Special Summoned with the effect of \"Des Dendle\".",
+    "level": 1,
+    "atk": 800,
+    "def": 800,
+    "properties": [
+      "Plant",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/12965762.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 12395,
+    "type": "Token",
+    "name": "Wicked Token",
+    "englishAttribute": "dark",
+    "localizedAttribute": "DARK",
+    "effectText": "Special Summoned with the effect of \"Statue of the Wicked\".",
+    "level": 4,
+    "atk": 1000,
+    "def": 1000,
+    "properties": [
+      "Fiend",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/65810490.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 12405,
+    "type": "Token",
+    "name": "Wild Fire Token",
+    "englishAttribute": "fire",
+    "localizedAttribute": "FIRE",
+    "effectText": "Special Summoned with the effect of \"Wild Fire\".",
+    "level": 3,
+    "atk": 1000,
+    "def": 1000,
+    "properties": [
+      "Pyro",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/68815402.jpg",
+    "frameType": "token"
+  },
+  {
+    "id": 12542,
+    "type": "Token",
+    "name": "World Legacy Token",
+    "englishAttribute": "dark",
+    "localizedAttribute": "DARK",
+    "effectText": "This card can be used as a \"World Legacy Token\".\n\n\n*If used for another Token, apply that Token's Type/Attribute/Level/ATK/DEF.",
+    "level": 1,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Machine",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/46647145.jpg",
+    "frameType": "token",
+    "archetype": "World Legacy"
+  },
+  {
+    "id": 12580,
+    "type": "Token",
+    "name": "Worm Token",
+    "englishAttribute": "earth",
+    "localizedAttribute": "EARTH",
+    "effectText": "Special Summoned with the effect of \"Worm Bait\".",
+    "level": 1,
+    "atk": 0,
+    "def": 0,
+    "properties": [
+      "Insect",
+      "Effect"
+    ],
+    "cardImage": "https://images.ygoprodeck.com/images/cards/43140792.jpg",
+    "frameType": "token",
+    "archetype": "Worm"
+  }
+]

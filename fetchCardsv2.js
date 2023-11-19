@@ -105,6 +105,8 @@ async function fetchingCardsDB() {
     // Find corresponding card in existing data based on konami_id
     const existingCard = existingCardsData.find(card => card.id === apiCard.misc_info[0].konami_id);
     //console.log(apiCard, 'existing card OBJ')
+    //
+    ///////////// add token cards to different file - apiCard.type === 'Token'
     // If a match is found, add frameType property
       if (existingCard) {
         if (apiCard.misc_info[0].formats) {
