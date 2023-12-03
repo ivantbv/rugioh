@@ -236,11 +236,13 @@ class SearchCards {
             this.chosenNarrowSettings[0].LevelRankValue = levelRankInputFiled.value;
             this.chosenNarrowSettings[0].CompareValue = equalsSigns.value;
             console.log(this.chosenNarrowSettings, 'NARROW SETTINGS FROM LVL RANK')
+            if (!this.chosenNarrowSettings[0].LevelRankValue) {
+                return;
+            }
 
             this.searchContainer.append(this.resetSearchBtn);
             this.searchContainer.append(this.searchWithinDiv);
             const checkBox = document.querySelector('input[name="search-all"]');
-            console.log(checkBox.checked, 'ЧЕКБОКС')
             this.clearCardsList();
             renderCards.currentPage = 1;
             renderCards.cardsList.scrollTop = 0;
@@ -253,9 +255,6 @@ class SearchCards {
                 renderCards.allCards = this.searchRes;
             }
 
-            if (!this.chosenNarrowSettings[0].LevelRankValue) {
-                return;
-            }
             if (this.chosenNarrowSettings.length > 0) {
                 
                 // console.log(checkBox.checked, 'ESLI CHECKED');
@@ -265,40 +264,41 @@ class SearchCards {
                 const filteredCards = narrowBy(checkBox && checkBox.checked ? this.searchRes : this.allCards, this.chosenNarrowSettings);
                 narrowedCardFrames.push(filteredCards);
                 
-                const NarrowedFrameCardsWithDuplicates = 
-                                narrowedCardFrames.flatMap((result) => result);
+                // const NarrowedFrameCardsWithDuplicates = 
+                //                 narrowedCardFrames.flatMap((result) => result);
         
-                const updatedNarrowedFrameCards = 
-                                this.removeDuplicatedCardObjects(NarrowedFrameCardsWithDuplicates);
+                // const updatedNarrowedFrameCards = 
+                //                 this.removeDuplicatedCardObjects(NarrowedFrameCardsWithDuplicates);
         
-                this.searchRes = updatedNarrowedFrameCards;
-                if (!updatedNarrowedFrameCards || updatedNarrowedFrameCards.length < 1) {
-                    this.searchRes = updatedNarrowedFrameCards;
-                    checkBox.checked = true;
-                    this.clearCardsList();
-                    this.displayNumberOfFoundCards(this.numberOfFoundCards);
-                    return;
-                }
+                // this.searchRes = updatedNarrowedFrameCards;
+                // if (!updatedNarrowedFrameCards || updatedNarrowedFrameCards.length < 1) {
+                //     this.searchRes = updatedNarrowedFrameCards;
+                //     checkBox.checked = true;
+                //     this.clearCardsList();
+                //     this.displayNumberOfFoundCards(this.numberOfFoundCards);
+                //     return;
+                // }
         
-                if (checkBox && checkBox.checked) {
+                // if (checkBox && checkBox.checked) {
                   
-                    this.clearCardsList();
-                    this.searchRes = updatedNarrowedFrameCards;
-                    console.log(this.searchRes, 'search res');
-                    renderCards.appendCards(renderCards.currentPage, this.searchRes);
-                    checkBox.checked = true;
-                    this.displayNumberOfFoundCards(this.numberOfFoundCards);
-                    console.log('asdddddaaaaaaaaaaadddddasssdasdasasd', this.searchRes)
-                    return;
-                } else {
-                    this.clearCardsList();
-                    this.searchRes = updatedNarrowedFrameCards;
-                    console.log(this.searchRes, 'search res');
-                    renderCards.appendCards(renderCards.currentPage, this.searchRes);
-                    this.displayNumberOfFoundCards(this.numberOfFoundCards);
-                    console.log(this.searchRes, 'SEARCH RESS ARR HERE')
-                    return;
-                }
+                //     this.clearCardsList();
+                //     this.searchRes = updatedNarrowedFrameCards;
+                //     console.log(this.searchRes, 'search res');
+                //     renderCards.appendCards(renderCards.currentPage, this.searchRes);
+                //     checkBox.checked = true;
+                //     this.displayNumberOfFoundCards(this.numberOfFoundCards);
+                //     console.log('asdddddaaaaaaaaaaadddddasssdasdasasd', this.searchRes)
+                //     return;
+                // } else {
+                //     this.clearCardsList();
+                //     this.searchRes = updatedNarrowedFrameCards;
+                //     console.log(this.searchRes, 'search res');
+                //     renderCards.appendCards(renderCards.currentPage, this.searchRes);
+                //     this.displayNumberOfFoundCards(this.numberOfFoundCards);
+                //     console.log(this.searchRes, 'SEARCH RESS ARR HERE')
+                //     return;
+                // }
+                this.updateSearchResults(narrowedCardFrames, checkBox);
             }
 
             
@@ -374,39 +374,40 @@ class SearchCards {
                     narrowedCardFrames.push({ searchStr, filteredCards });
                 });
                 
-                const NarrowedFrameCardsWithDuplicates = 
-                                narrowedCardFrames.flatMap((result) => result.filteredCards);
+                // const NarrowedFrameCardsWithDuplicates = 
+                //                 narrowedCardFrames.flatMap((result) => result.filteredCards);
         
-                const updatedNarrowedFrameCards = 
-                                this.removeDuplicatedCardObjects(NarrowedFrameCardsWithDuplicates);
+                // const updatedNarrowedFrameCards = 
+                //                 this.removeDuplicatedCardObjects(NarrowedFrameCardsWithDuplicates);
         
-                this.searchRes = updatedNarrowedFrameCards;
-                if (!updatedNarrowedFrameCards || updatedNarrowedFrameCards.length < 1 && checkBox.checked) {
-                    this.searchRes = updatedNarrowedFrameCards;
-                    checkBox.checked = true;
-                    this.clearCardsList();
-                    this.displayNumberOfFoundCards(this.numberOfFoundCards);
-                    return;
-                }
+                // this.searchRes = updatedNarrowedFrameCards;
+                // if (!updatedNarrowedFrameCards || updatedNarrowedFrameCards.length < 1 && checkBox.checked) {
+                //     this.searchRes = updatedNarrowedFrameCards;
+                //     checkBox.checked = true;
+                //     this.clearCardsList();
+                //     this.displayNumberOfFoundCards(this.numberOfFoundCards);
+                //     return;
+                // }
         
-                if (checkBox && checkBox.checked) {
-                    this.clearCardsList();
-                    this.searchRes = updatedNarrowedFrameCards;
-                    console.log(this.searchRes, 'search res');
-                    renderCards.appendCards(renderCards.currentPage, this.searchRes);
-                    checkBox.checked = true;
-                    this.displayNumberOfFoundCards(this.numberOfFoundCards);
-                    console.log(this.searchRes, 'SEARCH RESS ARR HERE')
-                    return;
-                } else {
-                    this.clearCardsList();
-                    this.searchRes = updatedNarrowedFrameCards;
-                    console.log(this.searchRes, 'search res');
-                    renderCards.appendCards(renderCards.currentPage, this.searchRes);
-                    this.displayNumberOfFoundCards(this.numberOfFoundCards);
-                    console.log(this.searchRes, 'SEARCH RESS ARR HERE')
-                    return;
-                }
+                // if (checkBox && checkBox.checked) {
+                //     this.clearCardsList();
+                //     this.searchRes = updatedNarrowedFrameCards;
+                //     console.log(this.searchRes, 'search res');
+                //     renderCards.appendCards(renderCards.currentPage, this.searchRes);
+                //     checkBox.checked = true;
+                //     this.displayNumberOfFoundCards(this.numberOfFoundCards);
+                //     console.log(this.searchRes, 'SEARCH RESS ARR HERE')
+                //     return;
+                // } else {
+                //     this.clearCardsList();
+                //     this.searchRes = updatedNarrowedFrameCards;
+                //     console.log(this.searchRes, 'search res');
+                //     renderCards.appendCards(renderCards.currentPage, this.searchRes);
+                //     this.displayNumberOfFoundCards(this.numberOfFoundCards);
+                //     console.log(this.searchRes, 'SEARCH RESS ARR HERE')
+                //     return;
+                // }
+                this.updateSearchResults(narrowedCardFrames, checkBox);
             }
         });
     }
@@ -481,5 +482,37 @@ class SearchCards {
         elem.classList.add(className);
         return elem;
     }
+
+    updateSearchResults(narrowedCardFrames, checkBox) {
+        const NarrowedFrameCardsWithDuplicates = narrowedCardFrames.flatMap((result) => result.filteredCards ? result.filteredCards : result);
+        const updatedNarrowedFrameCards = this.removeDuplicatedCardObjects(NarrowedFrameCardsWithDuplicates);
+    
+        this.searchRes = updatedNarrowedFrameCards;
+    
+        if (!updatedNarrowedFrameCards || updatedNarrowedFrameCards.length < 1 && checkBox.checked) {
+          this.searchRes = updatedNarrowedFrameCards;
+          checkBox.checked = true;
+          this.clearCardsList();
+          this.displayNumberOfFoundCards(this.numberOfFoundCards);
+          return;
+        }
+    
+        if (checkBox && checkBox.checked) {
+          this.clearCardsList();
+          this.searchRes = updatedNarrowedFrameCards;
+          console.log(this.searchRes, 'search res');
+          renderCards.appendCards(renderCards.currentPage, this.searchRes);
+          checkBox.checked = true;
+          this.displayNumberOfFoundCards(this.numberOfFoundCards);
+          console.log(this.searchRes, 'SEARCH RESS ARR HERE');
+        } else {
+          this.clearCardsList();
+          this.searchRes = updatedNarrowedFrameCards;
+          console.log(this.searchRes, 'search res');
+          renderCards.appendCards(renderCards.currentPage, this.searchRes);
+          this.displayNumberOfFoundCards(this.numberOfFoundCards);
+        }
+      }
+
 }
 //console.log(renderCards.allCards, 'test')
