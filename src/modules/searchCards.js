@@ -29,6 +29,9 @@ class SearchCards {
         this.monsterAttributeNarrowBtn.textContent = 'Search by attribute:';
         this.monsterTypeNarrowBtn = this.createElemWithClass('button', 'monster-attr-btn');
         this.monsterTypeNarrowBtn.textContent = 'Search by type:';
+        this.levelRankNarrowBtn = this.createElemWithClass('button', 'lvl-rank-pend-btn');
+        this.levelRankNarrowBtn.textContent = 'Search by LVL/Rank';
+        
         this.resetSearchBtn = this.createElemWithClass('button', 'reset-search-btn');
         this.resetSearchBtn.textContent = 'Reset Search';
     
@@ -52,10 +55,10 @@ class SearchCards {
         const body = document.querySelector('body');
         body.append(this.searchContainer);
     
-        searchBtn.addEventListener('click', this.performSearch.bind(this, searchBar, this.numberOfFoundCards));
+        searchBtn.addEventListener('click', this.performTextSearch.bind(this, searchBar, this.numberOfFoundCards));
     }
     
-    performSearch(searchBar, numberOfFoundCards) {
+    performTextSearch(searchBar, numberOfFoundCards) {
         const scrollPosition = renderCards.cardsList.scrollTop;
         renderCards.currentPage = 1;
         renderCards.cardsList.scrollTop = 0;
@@ -123,14 +126,17 @@ class SearchCards {
             const narrowSearchContainer = this.createElemWithClass('div', 'narrow-search-container');
             const byCardFrameContainer = this.createElemWithClass('div', 'card-frame-cont');
             const byMonsterAttrContainer = this.createElemWithClass('div', 'monster-attr-cont');
-            const byMonsterTypeContainer = this.createElemWithClass('div', 'monster-type-cont')
+            const byMonsterTypeContainer = this.createElemWithClass('div', 'monster-type-cont');
+            const byLevelRank = this.createElemWithClass('div', 'lvl-rank-pend-cont');
 
             byCardFrameContainer.append(this.cardFrameNarrowBtn);
             byMonsterAttrContainer.append(this.monsterAttributeNarrowBtn);
-            byMonsterTypeContainer.append(this.monsterTypeNarrowBtn)
+            byMonsterTypeContainer.append(this.monsterTypeNarrowBtn);
+            byLevelRank.append(this.levelRankNarrowBtn);
             narrowSearchContainer.append(byCardFrameContainer);
             narrowSearchContainer.append(byMonsterAttrContainer);
             narrowSearchContainer.append(byMonsterTypeContainer);
+            narrowSearchContainer.append(byLevelRank);
             this.createNarrowSearchCheckboxes(byCardFrameContainer, "narrow-search-settings", 
                                                                     "normal", "effect", "ritual",
                                                                     "fusion", "synchro", "xyz",
@@ -149,7 +155,8 @@ class SearchCards {
                                                                     'Machine', 'Plant', 'Psychic', 'Pyro', 
                                                                     'Reptile', 'Rock', 'Sea Serpent', 
                                                                     'Spellcaster', 'Thunder', 'Warrior', 
-                                                                    'Winged Beast', 'Wyrm', 'Zombie')
+                                                                    'Winged Beast', 'Wyrm', 'Zombie');
+            this.createNarrowSearchNumberField(byLevelRank);
             this.narrowSearchModal.append(narrowSearchContainer);
             document.body.appendChild(this.narrowSearchModal);
           }
@@ -157,7 +164,8 @@ class SearchCards {
           this.performNarrowSearch('narrow-search-settings', this.narrowByFrameType, this.cardFrameNarrowBtn);
           this.performNarrowSearch('attr-search-settings', this.narrowByMonsterAttribute, this.monsterAttributeNarrowBtn)
           this.performNarrowSearch('type-search-settings', this.narrowByCardFrame, this.monsterTypeNarrowBtn);
-
+          //add the search by rank/lvl/pend here
+          this.performNarrowSearchByLvlRank(this.levelRankNarrowBtn, this.narrowbyLevelRank);
           this.narrowSearchBtn.addEventListener('click', () => {
             // Show the modal when the button is clicked
             this.narrowSearchModal.style.display = 'block';
@@ -176,18 +184,161 @@ class SearchCards {
         });
     }
     
-    showNarrowSearchModal(narrowSearchModal) {
-        this.searchContainer.append(narrowSearchModal);
-        this.performNarrowSearch('narrow-search-settings', this.narrowByCardFrame, this.cardFrameNarrowBtn);
-        this.performNarrowSearch('type-search-settings', this.narrowByMonsterAttribute, this.monsterAttributeNarrowBtn)
+    narrowbyLevelRank(cards, lvlOrRankArray) {
+        const comparisonOperators = {
+          '=': (a, b) => a == b,
+          '<=': (a, b) => a <= b,
+          '>=': (a, b) => a >= b,
+        };
+      
+        const filteredCards = cards.filter((card) => {
+          // Check if lvlOrRankArray is an array with at least one object
+          if (Array.isArray(lvlOrRankArray) && lvlOrRankArray.length > 0) {
+            return Object.entries(lvlOrRankArray[0]).some(([key, value]) => {
+      
+              if (key === 'LvlOrRank' && value === 'Level') {
+                const comparisonFunction = comparisonOperators[lvlOrRankArray[0].CompareValue];
+                if (comparisonFunction) {
+                  return comparisonFunction(card.level, lvlOrRankArray[0].LevelRankValue);
+                }
+              }
+              if (key === 'LvlOrRank' && value === 'Rank') {
+                const comparisonFunction = comparisonOperators[lvlOrRankArray[0].CompareValue];
+                if (comparisonFunction) {
+                  return comparisonFunction(card.rank, lvlOrRankArray[0].LevelRankValue);
+                }
+              }
+              // Handle other cases as needed
+              return false;
+            });
+          }
+      
+          // Handle the case when lvlOrRankArray is not an array or is empty
+          return false;
+        });
+      
+        console.log('filtered cards', filteredCards);
+        return filteredCards;
     }
+      
+
+    performNarrowSearchByLvlRank(narrowSearchBtn, narrowBy) { //narrowBy is to be made function that will take 4 arguments - cards array, and level/rank values and filter the cards array based on that
+        const radioBtnsLvlRank = document.querySelectorAll('input[name="lvl-rank-search"]')
+        const equalsSigns = document.querySelector('#signs');
+        const levelRankInputFiled = document.querySelector('#number-search');
+        
+        narrowSearchBtn.addEventListener('click', () => {
+            radioBtnsLvlRank.forEach(radioBtn => {
+                if (radioBtn.checked) {
+                    this.chosenNarrowSettings = [{'LvlOrRank': radioBtn.value}];
+                }
+            })
+            this.chosenNarrowSettings[0].LevelRankValue = levelRankInputFiled.value;
+            this.chosenNarrowSettings[0].CompareValue = equalsSigns.value;
+            console.log(this.chosenNarrowSettings, 'NARROW SETTINGS FROM LVL RANK')
+
+            this.searchContainer.append(this.resetSearchBtn);
+            this.searchContainer.append(this.searchWithinDiv);
+            const checkBox = document.querySelector('input[name="search-all"]');
+            console.log(checkBox.checked, 'ЧЕКБОКС')
+            this.clearCardsList();
+            renderCards.currentPage = 1;
+            renderCards.cardsList.scrollTop = 0;
+
+            if (checkBox && !checkBox.checked) {
+                renderCards.allCards = [...renderCards.originalAllCards];
+               
+            }
+            if (checkBox && checkBox.checked) {
+                renderCards.allCards = this.searchRes;
+            }
+
+            if (!this.chosenNarrowSettings[0].LevelRankValue) {
+                return;
+            }
+            if (this.chosenNarrowSettings.length > 0) {
+                
+                // console.log(checkBox.checked, 'ESLI CHECKED');
+                let narrowedCardFrames = [];
+        
+                
+                const filteredCards = narrowBy(checkBox && checkBox.checked ? this.searchRes : this.allCards, this.chosenNarrowSettings);
+                narrowedCardFrames.push(filteredCards);
+                
+                const NarrowedFrameCardsWithDuplicates = 
+                                narrowedCardFrames.flatMap((result) => result);
+        
+                const updatedNarrowedFrameCards = 
+                                this.removeDuplicatedCardObjects(NarrowedFrameCardsWithDuplicates);
+        
+                this.searchRes = updatedNarrowedFrameCards;
+                if (!updatedNarrowedFrameCards || updatedNarrowedFrameCards.length < 1) {
+                    this.searchRes = updatedNarrowedFrameCards;
+                    checkBox.checked = true;
+                    this.clearCardsList();
+                    this.displayNumberOfFoundCards(this.numberOfFoundCards);
+                    return;
+                }
+        
+                if (checkBox && checkBox.checked) {
+                  
+                    this.clearCardsList();
+                    this.searchRes = updatedNarrowedFrameCards;
+                    console.log(this.searchRes, 'search res');
+                    renderCards.appendCards(renderCards.currentPage, this.searchRes);
+                    checkBox.checked = true;
+                    this.displayNumberOfFoundCards(this.numberOfFoundCards);
+                    console.log('asdddddaaaaaaaaaaadddddasssdasdasasd', this.searchRes)
+                    return;
+                } else {
+                    this.clearCardsList();
+                    this.searchRes = updatedNarrowedFrameCards;
+                    console.log(this.searchRes, 'search res');
+                    renderCards.appendCards(renderCards.currentPage, this.searchRes);
+                    this.displayNumberOfFoundCards(this.numberOfFoundCards);
+                    console.log(this.searchRes, 'SEARCH RESS ARR HERE')
+                    return;
+                }
+            }
+
+            
+        })
+        //i get this log right await, without the this.performNarrowSearchByLvlRank being clicked - разобраться
+        
+
+    }
+
+    createNarrowSearchNumberField(container) {
+        const numberSearchContainer = this.createElemWithClass('div', 'narrow-lvl-rank-div');
+        numberSearchContainer.innerHTML = `
+            <div class="input-number-narrow-search">
+            <label for="signs">Choose a value:</label>
+                <select id="signs" name="signs">
+                    <option value="=" selected>=</option>
+                    <option value="\<=">≤</option>
+                    <option value="\>=">≥</option>
+                </select>
+                <input type="number" id="number-search" />
+                <input type="radio" id="level-search" name="lvl-rank-search" value="Level" checked />
+                <label for="level-search">Level</label>
+                <input type="radio" id="rank-search" name="lvl-rank-search" value="Rank" />
+                <label for="rank-search">Rank</label>
+            </div>
+        `;
+        container.appendChild(numberSearchContainer);
+    }
+
+    // showNarrowSearchModal(narrowSearchModal) {
+    //     this.searchContainer.append(narrowSearchModal);
+    //     this.performNarrowSearch('narrow-search-settings', this.narrowByCardFrame, this.cardFrameNarrowBtn);
+    //     this.performNarrowSearch('type-search-settings', this.narrowByMonsterAttribute, this.monsterAttributeNarrowBtn)
+    // }
     //try to use this method for narrowByMonsterAttribute
     performNarrowSearch(narrowSearchSettings, narrowBy, narrowSearchButton) {
         const checkboxes = document.querySelectorAll('.checkbox-narrow-search');
         const narrowSearchCheckboxes = document.querySelectorAll(`input[type=checkbox][name=${narrowSearchSettings}]`);
         //let chosenNarrowSettings = [];
        
-    
         narrowSearchButton.addEventListener('click', () => {
             narrowSearchCheckboxes.forEach((checkbox) => {
                 if (checkbox.checked) {
