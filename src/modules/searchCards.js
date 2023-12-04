@@ -249,62 +249,22 @@ class SearchCards {
 
             if (checkBox && !checkBox.checked) {
                 renderCards.allCards = [...renderCards.originalAllCards];
-               
             }
             if (checkBox && checkBox.checked) {
                 renderCards.allCards = this.searchRes;
             }
 
             if (this.chosenNarrowSettings.length > 0) {
-                
                 // console.log(checkBox.checked, 'ESLI CHECKED');
                 let narrowedCardFrames = [];
-        
                 
                 const filteredCards = narrowBy(checkBox && checkBox.checked ? this.searchRes : this.allCards, this.chosenNarrowSettings);
                 narrowedCardFrames.push(filteredCards);
                 
-                // const NarrowedFrameCardsWithDuplicates = 
-                //                 narrowedCardFrames.flatMap((result) => result);
-        
-                // const updatedNarrowedFrameCards = 
-                //                 this.removeDuplicatedCardObjects(NarrowedFrameCardsWithDuplicates);
-        
-                // this.searchRes = updatedNarrowedFrameCards;
-                // if (!updatedNarrowedFrameCards || updatedNarrowedFrameCards.length < 1) {
-                //     this.searchRes = updatedNarrowedFrameCards;
-                //     checkBox.checked = true;
-                //     this.clearCardsList();
-                //     this.displayNumberOfFoundCards(this.numberOfFoundCards);
-                //     return;
-                // }
-        
-                // if (checkBox && checkBox.checked) {
-                  
-                //     this.clearCardsList();
-                //     this.searchRes = updatedNarrowedFrameCards;
-                //     console.log(this.searchRes, 'search res');
-                //     renderCards.appendCards(renderCards.currentPage, this.searchRes);
-                //     checkBox.checked = true;
-                //     this.displayNumberOfFoundCards(this.numberOfFoundCards);
-                //     console.log('asdddddaaaaaaaaaaadddddasssdasdasasd', this.searchRes)
-                //     return;
-                // } else {
-                //     this.clearCardsList();
-                //     this.searchRes = updatedNarrowedFrameCards;
-                //     console.log(this.searchRes, 'search res');
-                //     renderCards.appendCards(renderCards.currentPage, this.searchRes);
-                //     this.displayNumberOfFoundCards(this.numberOfFoundCards);
-                //     console.log(this.searchRes, 'SEARCH RESS ARR HERE')
-                //     return;
-                // }
                 this.updateSearchResults(narrowedCardFrames, checkBox);
             }
-
             
         })
-        //i get this log right await, without the this.performNarrowSearchByLvlRank being clicked - разобраться
-        
 
     }
 
@@ -417,10 +377,10 @@ class SearchCards {
             if (card.frameType) {
                 if (searchStr.includes(' ')) {
                     if (card.frameType.replace('_', ' ') === searchStr.toLowerCase()) {
-                        return card.frameType.replace('_', ' ').includes(searchStr.toLowerCase());
+                        return card.frameType.replace('_', ' ') == searchStr.toLowerCase();
                     }
                 } else {
-                    return card.frameType.includes(searchStr.toLowerCase());
+                    return card.frameType == searchStr.toLowerCase();
                 }   
             }
                 return false;
