@@ -31,6 +31,8 @@ class SearchCards {
         this.monsterTypeNarrowBtn.textContent = 'Search by type:';
         this.levelRankNarrowBtn = this.createElemWithClass('button', 'lvl-rank-pend-btn');
         this.levelRankNarrowBtn.textContent = 'Search by LVL/Rank';
+        this.pendScaleNarrowBtn = this.createElemWithClass('button', 'pend-scale-btn');
+        this.pendScaleNarrowBtn.textContent = 'Search by Pendulum Scale';
         
         this.resetSearchBtn = this.createElemWithClass('button', 'reset-search-btn');
         this.resetSearchBtn.textContent = 'Reset Search';
@@ -128,15 +130,19 @@ class SearchCards {
             const byMonsterAttrContainer = this.createElemWithClass('div', 'monster-attr-cont');
             const byMonsterTypeContainer = this.createElemWithClass('div', 'monster-type-cont');
             const byLevelRank = this.createElemWithClass('div', 'lvl-rank-pend-cont');
+            const byPendScale = this.createElemWithClass('div', 'pend-scale-cont');
 
             byCardFrameContainer.append(this.cardFrameNarrowBtn);
             byMonsterAttrContainer.append(this.monsterAttributeNarrowBtn);
             byMonsterTypeContainer.append(this.monsterTypeNarrowBtn);
             byLevelRank.append(this.levelRankNarrowBtn);
+            byPendScale.append(this.pendScaleNarrowBtn);
             narrowSearchContainer.append(byCardFrameContainer);
             narrowSearchContainer.append(byMonsterAttrContainer);
             narrowSearchContainer.append(byMonsterTypeContainer);
             narrowSearchContainer.append(byLevelRank);
+            narrowSearchContainer.append(byPendScale);
+
             this.createNarrowSearchCheckboxes(byCardFrameContainer, "narrow-search-settings", 
                                                                     "normal", "effect", "ritual",
                                                                     "fusion", "synchro", "xyz",
@@ -157,6 +163,7 @@ class SearchCards {
                                                                     'Spellcaster', 'Thunder', 'Warrior', 
                                                                     'Winged Beast', 'Wyrm', 'Zombie');
             this.createNarrowSearchNumberField(byLevelRank);
+            this.createNarrowSearchPendScaleField(byPendScale);
             this.narrowSearchModal.append(narrowSearchContainer);
             document.body.appendChild(this.narrowSearchModal);
           }
@@ -165,7 +172,8 @@ class SearchCards {
           this.performNarrowSearch('attr-search-settings', this.narrowByMonsterAttribute, this.monsterAttributeNarrowBtn)
           this.performNarrowSearch('type-search-settings', this.narrowByCardFrame, this.monsterTypeNarrowBtn);
           //add the search by rank/lvl/pend here
-          this.performNarrowSearchByLvlRank(this.levelRankNarrowBtn, this.narrowbyLevelRank);
+          this.performNarrowSearchByLvlRank(this.levelRankNarrowBtn, this.narrowbyLevelRankScale);
+          this.performNarrowSearchByPendScale(this.pendScaleNarrowBtn, this.narrowbyLevelRankScale);
           this.narrowSearchBtn.addEventListener('click', () => {
             // Show the modal when the button is clicked
             this.narrowSearchModal.style.display = 'block';
@@ -184,30 +192,39 @@ class SearchCards {
         });
     }
     
-    narrowbyLevelRank(cards, lvlOrRankArray) {
+    narrowbyLevelRankScale(cards, lvlOrRankArray) {
         const comparisonOperators = {
           '=': (a, b) => a == b,
           '<=': (a, b) => a <= b,
           '>=': (a, b) => a >= b,
         };
-      
         const filteredCards = cards.filter((card) => {
           // Check if lvlOrRankArray is an array with at least one object
+          
           if (Array.isArray(lvlOrRankArray) && lvlOrRankArray.length > 0) {
             return Object.entries(lvlOrRankArray[0]).some(([key, value]) => {
-      
-              if (key === 'LvlOrRank' && value === 'Level') {
-                const comparisonFunction = comparisonOperators[lvlOrRankArray[0].CompareValue];
-                if (comparisonFunction) {
-                  return comparisonFunction(card.level, lvlOrRankArray[0].LevelRankValue);
+                if (key === 'LvlOrRank' && value === 'PendScale') {
+                    const comparisonFunction = comparisonOperators[lvlOrRankArray[0].CompareValue];
+                    if (comparisonFunction) {
+                        return comparisonFunction(card.pendScale, lvlOrRankArray[0].LevelRankValue);
+                    }
                 }
-              }
-              if (key === 'LvlOrRank' && value === 'Rank') {
-                const comparisonFunction = comparisonOperators[lvlOrRankArray[0].CompareValue];
-                if (comparisonFunction) {
-                  return comparisonFunction(card.rank, lvlOrRankArray[0].LevelRankValue);
+
+                if (key === 'LvlOrRank' && value === 'Level') {
+                    
+                    const comparisonFunction = comparisonOperators[lvlOrRankArray[0].CompareValue];
+                    if (comparisonFunction) {
+                    return comparisonFunction(card.level, lvlOrRankArray[0].LevelRankValue);
+                    }
                 }
-              }
+                if (key === 'LvlOrRank' && value === 'Rank') {
+                    const comparisonFunction = comparisonOperators[lvlOrRankArray[0].CompareValue];
+                    console.log('asd', comparisonFunction);
+                    if (comparisonFunction) {
+                    return comparisonFunction(card.rank, lvlOrRankArray[0].LevelRankValue);
+                    }
+                }
+
               // Handle other cases as needed
               return false;
             });
@@ -221,6 +238,44 @@ class SearchCards {
         return filteredCards;
     }
       
+    performNarrowSearchByPendScale(narrowSearchBtn, narrowBy) {
+        const equalsSigns = document.querySelector('#pend-signs');
+        const pendScaleInputField = document.querySelector('#pend-search');
+        
+        narrowSearchBtn.addEventListener('click', () => {
+            this.chosenNarrowSettings = [{'LvlOrRank': 'PendScale'}];
+            this.chosenNarrowSettings[0].LevelRankValue = pendScaleInputField.value
+            this.chosenNarrowSettings[0].CompareValue = equalsSigns.value
+                                        
+            console.log(this.chosenNarrowSettings, ' NARROW SET?')
+            if (!this.chosenNarrowSettings[0].LevelRankValue) {
+                return;
+            }
+            this.searchContainer.append(this.resetSearchBtn);
+            this.searchContainer.append(this.searchWithinDiv);
+            const checkBox = document.querySelector('input[name="search-all"]');
+            this.clearCardsList();
+            renderCards.currentPage = 1;
+            renderCards.cardsList.scrollTop = 0;
+
+            if (checkBox && !checkBox.checked) {
+                renderCards.allCards = [...renderCards.originalAllCards];
+            }
+            if (checkBox && checkBox.checked) {
+                renderCards.allCards = this.searchRes;
+            }
+            
+            if (this.chosenNarrowSettings.length > 0) {
+                // console.log(checkBox.checked, 'ESLI CHECKED');
+                let narrowedCardFrames = [];
+                const filteredCards = narrowBy(checkBox && checkBox.checked ? this.searchRes : this.allCards, this.chosenNarrowSettings);
+                console.log(filteredCards, 'фильтеред кардс')
+                narrowedCardFrames.push(filteredCards);
+                this.updateSearchResults(narrowedCardFrames, checkBox);
+            }
+
+        })
+    }
 
     performNarrowSearchByLvlRank(narrowSearchBtn, narrowBy) { //narrowBy is to be made function that will take 4 arguments - cards array, and level/rank values and filter the cards array based on that
         const radioBtnsLvlRank = document.querySelectorAll('input[name="lvl-rank-search"]')
@@ -266,6 +321,22 @@ class SearchCards {
             
         })
 
+    }
+
+    createNarrowSearchPendScaleField(container) {
+        const pendScaleSearchContainer = this.createElemWithClass('div', 'narrow-pend-scale-div');
+        pendScaleSearchContainer.innerHTML = `
+            <div class="input-number-narrow-search">
+                <label for="pend-signs">Choose a value:</label>
+                    <select id="pend-signs" name="pend-signs">
+                        <option value="=" selected>=</option>
+                        <option value="\<=">≤</option>
+                        <option value="\>=">≥</option>
+                    </select>
+                    <input type="number" id="pend-search" />
+            </div>
+        `;
+        container.appendChild(pendScaleSearchContainer);
     }
 
     createNarrowSearchNumberField(container) {
