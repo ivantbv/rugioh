@@ -33,6 +33,8 @@ class SearchCards {
         this.levelRankNarrowBtn.textContent = 'Search by LVL/Rank';
         this.pendScaleNarrowBtn = this.createElemWithClass('button', 'pend-scale-btn');
         this.pendScaleNarrowBtn.textContent = 'Search by Pendulum Scale';
+        this.stIconNarrowBtn = this.createElemWithClass('button', 'st-icon-btn');
+        this.stIconNarrowBtn.textContent = 'Search by Spell/Trap icon';
         
         this.resetSearchBtn = this.createElemWithClass('button', 'reset-search-btn');
         this.resetSearchBtn.textContent = 'Reset Search';
@@ -131,17 +133,20 @@ class SearchCards {
             const byMonsterTypeContainer = this.createElemWithClass('div', 'monster-type-cont');
             const byLevelRank = this.createElemWithClass('div', 'lvl-rank-pend-cont');
             const byPendScale = this.createElemWithClass('div', 'pend-scale-cont');
+            const bySTicon = this.createElemWithClass('div', 'st-icon-cont')
 
             byCardFrameContainer.append(this.cardFrameNarrowBtn);
             byMonsterAttrContainer.append(this.monsterAttributeNarrowBtn);
             byMonsterTypeContainer.append(this.monsterTypeNarrowBtn);
             byLevelRank.append(this.levelRankNarrowBtn);
             byPendScale.append(this.pendScaleNarrowBtn);
+            bySTicon.append(this.stIconNarrowBtn)
             narrowSearchContainer.append(byCardFrameContainer);
             narrowSearchContainer.append(byMonsterAttrContainer);
             narrowSearchContainer.append(byMonsterTypeContainer);
             narrowSearchContainer.append(byLevelRank);
             narrowSearchContainer.append(byPendScale);
+            narrowSearchContainer.append(bySTicon)
 
             this.createNarrowSearchCheckboxes(byCardFrameContainer, "narrow-search-settings", 
                                                                     "normal", "effect", "ritual",
@@ -164,6 +169,10 @@ class SearchCards {
                                                                     'Winged Beast', 'Wyrm', 'Zombie');
             this.createNarrowSearchNumberField(byLevelRank);
             this.createNarrowSearchPendScaleField(byPendScale);
+            this.createNarrowSearchCheckboxes(bySTicon, 'st-search-settings',
+                                                            'Normal Spell', 'Equip', 'Continuous Spell', 
+                                                            'Field', 'Ritual', 'Quick-Play', 
+                                                            'Normal Trap', 'Counter', 'Continuous Trap')
             this.narrowSearchModal.append(narrowSearchContainer);
             document.body.appendChild(this.narrowSearchModal);
           }
@@ -174,6 +183,7 @@ class SearchCards {
           //add the search by rank/lvl/pend here
           this.performNarrowSearchByLvlRank(this.levelRankNarrowBtn, this.narrowbyLevelRankScale);
           this.performNarrowSearchByPendScale(this.pendScaleNarrowBtn, this.narrowbyLevelRankScale);
+          this.performNarrowSearch('st-search-settings', this.narrowBySTicon, this.stIconNarrowBtn)
           this.narrowSearchBtn.addEventListener('click', () => {
             // Show the modal when the button is clicked
             this.narrowSearchModal.style.display = 'block';
@@ -321,6 +331,30 @@ class SearchCards {
             
         })
 
+    }
+
+    narrowBySTicon(cards, searchStr) {
+        const filteredCards = cards.filter((card) => {
+                if (card.frameType) {
+                    if (card.localizedProperty) {
+                        if (searchStr === 'Continuous Spell') {
+                            return card.localizedProperty == 'Continuous' && card.frameType === 'spell';
+                        } else if (searchStr === 'Continuous Trap') {
+                            return card.localizedProperty == 'Continuous' && card.frameType === 'trap';
+                        } else {return card.localizedProperty == searchStr;}
+                    }  else {
+                        if (searchStr === 'Normal Spell') {
+                            return card.frameType === 'spell';
+                        } else if (searchStr === 'Normal Trap') {
+                            return card.frameType === 'trap';
+                        } else {
+                             return card.frameType == searchStr.toLowerCase();
+                        }
+                    }
+                }
+                    return false;
+                });
+        return filteredCards;
     }
 
     createNarrowSearchPendScaleField(container) {
